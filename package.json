@@ -1,0 +1,28 @@
+{
+  "name": "dimension-spread",
+  "version": "0.0.1",
+  "description": "Spreading orbital motion through 01234D & time",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexburner/dimension-spread.git"
+  },
+  "keywords": [
+    "dimensions",
+    "space",
+    "time",
+    "orbital",
+    "motion",
+    "spread",
+    "trails"
+  ],
+  "author": "aburner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexburner/dimension-spread/issues"
+  },
+  "homepage": "https://github.com/alexburner/dimension-spread#readme"
+}
