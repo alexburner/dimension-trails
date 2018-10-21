@@ -15,11 +15,6 @@ export interface SimulationConfig {
   }
 }
 
-export interface SimulationData {
-  particles: Particle[]
-  neighborhood: Neighborhood
-}
-
 const DEFAULT_CONFIG: SimulationConfig = {
   behaviorSpec: {
     name: BehaviorNames.Orbits,
@@ -59,27 +54,35 @@ export class Simulation {
   }
 
   public tick() {
+    const { particles, neighborhood, config } = this
+
     // Reset accelerations
-    each(this.particles, p => (p.acceleration = multiply(p.acceleration, 0)))
+    each(particles, p => (p.acceleration = multiply(p.acceleration, 0)))
 
     // Apply particle behavior
-    behavior(this.particles, this.neighborhood, this.config.behaviorSpec)
+    behavior(particles, neighborhood, config.behaviorSpec)
 
     // Update positions
-    each(this.particles, p => {
+    each(particles, p => {
       p.velocity = add(p.velocity, p.acceleration)
-      p.velocity = limitMagnitude(p.velocity, this.config.max.speed)
+      p.velocity = limitMagnitude(p.velocity, config.max.speed)
       p.position = add(p.position, p.velocity)
     })
 
     // Apply particle bounding
-    bounding(this.particles, this.config.max.radius, this.config.boundingName)
+    bounding(particles, config.max.radius, config.boundingName)
 
     // Re-calculate Particle relations
-    this.neighborhood = getNeighborhood(this.particles)
+    this.neighborhood = getNeighborhood(particles)
   }
 
-  public getData(): SimulationData {
-    return { particles: this.particles, neighborhood: this.neighborhood }
+  public getData(): {
+    particles: Particle[]
+    neighborhood: Neighborhood
+  } {
+    return {
+      particles: this.particles,
+      neighborhood: this.neighborhood,
+    }
   }
 }
