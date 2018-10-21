@@ -1,5 +1,5 @@
-import { Particle } from '../particle/particle'
 import { each, map } from '../util'
+import { Particle } from './particle'
 import { getMagnitude, subtract, Vector } from './vector-n'
 
 /**

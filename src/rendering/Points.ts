@@ -1,5 +1,5 @@
+import { Neighborhood } from '../particle/neighbors'
 import { Particle3 } from '../particle/particle-3'
-import { Neighborhood } from '../simulation/neighbors'
 
 export class Points {
   constructor(group: THREE.Group) {

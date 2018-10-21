@@ -1,11 +1,11 @@
-import { clamp, each } from '../../util'
 import {
   add,
   divide,
   getMagnitudeSq,
   multiply,
   setMagnitude,
-} from '../vector-n'
+} from '../../particle/vector-n'
+import { clamp, each } from '../../util'
 import { Behavior, BehaviorNames } from './behavior'
 
 export interface OrbitsSpec {

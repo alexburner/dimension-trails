@@ -1,5 +1,5 @@
-import { Vector } from '../simulation/vector-n'
 import { Particle } from './particle'
+import { Vector } from './vector-n'
 
 /**
  * TypedArrays are converted to objects by JSON stringification

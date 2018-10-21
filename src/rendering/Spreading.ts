@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
+import { Neighborhood } from '../particle/neighbors'
 import { Particle3 } from '../particle/particle-3'
-import { Neighborhood } from '../simulation/neighbors'
 import { Grid } from './Grid'
 import { Points } from './Points'
 import { TimeTrails } from './TimeTrails'

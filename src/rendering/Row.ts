@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
 import { Particle3 } from '../particle/particle-3'
-import { Neighborhood } from './../simulation/neighbors'
+import { Neighborhood } from './../particle/neighbors'
 import { Sitting } from './Sitting'
 import { Spreading } from './Spreading'
 

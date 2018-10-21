@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
-import { Vector } from '../simulation/vector-n'
 import { Particle } from './particle'
+import { Vector } from './vector-n'
 
 export interface Particle3 {
   dimensions: number
