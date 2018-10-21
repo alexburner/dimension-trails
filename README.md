@@ -10,17 +10,12 @@ Source simulation - [https://alexburner.github.io/dimensions](https://alexburner
 
 ### Related links
 
-- [Consciousness, Creativity, and the Brain | David Lynch](https://www.youtube.com/watch?v=z2UHLMVr4vg&feature=youtu.be&t=41)
-
-- [Consciousness - Awareness as Attention | Michael Graziano](https://aeon.co/essays/how-consciousness-works-and-why-we-believe-in-ghosts)
-
-- [Consciousness as a State of Matter | Max Tegmark](https://medium.com/the-physics-arxiv-blog/why-physicists-are-saying-consciousness-is-a-state-of-matter-like-a-solid-a-liquid-or-a-gas-5e7ed624986d)
-
-- [Quantum Graphity | Fotini Markopoulou](http://nautil.us/issue/32/space/lets-rethink-space)
-
-- [Spacetime as Emergent from 4D Networks | Stephen Wolfram](http://blog.stephenwolfram.com/2015/12/what-is-spacetime-really/)
-
-- [Spacetime & Causality - 4D Non-Euclidean Mathematical Space | PBS Digital Studios](https://www.youtube.com/watch?v=YycAzdtUIko)
+> - [Consciousness, Creativity, and the Brain](https://www.youtube.com/watch?v=z2UHLMVr4vg&feature=youtu.be&t=41) | David Lynch
+> - [Consciousness - Awareness as Attention](https://aeon.co/essays/how-consciousness-works-and-why-we-believe-in-ghosts) | Michael Graziano
+> - [Consciousness as a State of Matter](https://medium.com/the-physics-arxiv-blog/why-physicists-are-saying-consciousness-is-a-state-of-matter-like-a-solid-a-liquid-or-a-gas-5e7ed624986d) | Max Tegmark
+> - [Quantum Graphity](http://nautil.us/issue/32/space/lets-rethink-space) | Fotini Markopoulou
+> - [Spacetime as Emergent from 4D Networks](http://blog.stephenwolfram.com/2015/12/what-is-spacetime-really/) | Stephen Wolfram
+> - [Spacetime & Causality - 4D Non-Euclidean Mathematical Space](https://www.youtube.com/watch?v=YycAzdtUIko) | PBS Digital Studios
 
 # development
 
