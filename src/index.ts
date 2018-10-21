@@ -13,7 +13,12 @@ if (!canvas) throw new Error('Failed to find canvas')
 
 const renderer = new Renderer(canvas as HTMLCanvasElement)
 
-const rows = times(DIMENSIONS, i => new Row(0, i * 100, 0))
+const ROW_HEIGHT = 100
+const ROW_WIDTH = 600
+const rows = times(
+  DIMENSIONS,
+  i => new Row(ROW_WIDTH, ROW_HEIGHT, 0, i * ROW_HEIGHT + ROW_HEIGHT / 2, 0),
+)
 each(rows, row => renderer.addObject(row.getObject()))
 
 const particleSets: any[] = times(
