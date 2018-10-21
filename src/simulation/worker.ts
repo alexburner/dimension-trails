@@ -19,17 +19,14 @@ import { Simulation } from './Simulation'
  * https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope
  *
  */
-const context = self as any
-// TODO const context = (self as any) as DedicatedWorkerGlobalScope;
+const context = (self as any) as DedicatedWorkerGlobalScope
 
 const simulation = new Simulation()
 
-const isWorkerMessage = (val: any): val is MsgToWorker =>
-  val && typeof val.type === 'string' // safe enough
+const send = (msg: MsgFromWorker) => context.postMessage(JSON.stringify(msg))
 
 context.addEventListener('message', (e: MessageEvent) => {
-  const message = JSON.parse(e.data)
-  if (!isWorkerMessage(message)) return
+  const message = JSON.parse(e.data) as MsgToWorker
   switch (message.type) {
     case 'init': {
       const particles = map(message.particles, toParticle)
@@ -54,5 +51,3 @@ context.addEventListener('message', (e: MessageEvent) => {
     }
   }
 })
-
-const send = (msg: MsgFromWorker) => context.postMessage(JSON.stringify(msg))
