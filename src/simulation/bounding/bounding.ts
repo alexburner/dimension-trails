@@ -1,4 +1,4 @@
-import { Particle } from '../particle'
+import { Particle } from '../../particle/particle'
 import { centerScaling } from './centerScaling'
 
 export type Bounding = (particles: Particle[], radius: number) => void

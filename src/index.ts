@@ -1,7 +1,7 @@
-import { toParticle3 } from './rendering/Particle3'
+import { makeFilledParticles, makeFreshParticles } from './particle/particle'
+import { toParticle3 } from './particle/particle-3'
 import { Renderer } from './rendering/Renderer'
 import { Row } from './rendering/Row'
-import { makeFilledParticles, makeFreshParticles } from './simulation/particle'
 import { SimulationWorker } from './simulation/SimulationWorker'
 import { each, map, times } from './util'
 

@@ -1,4 +1,4 @@
-import { Particle } from '../particle'
+import { Particle } from '../../particle/particle'
 import { Neighborhood } from './../neighbors'
 import { orbits, OrbitsSpec } from './orbits'
 

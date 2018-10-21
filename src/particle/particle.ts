@@ -1,5 +1,5 @@
+import { backfill, radialRandomVector, Vector } from '../simulation/vector-n'
 import { each, map, times } from '../util'
-import { backfill, radialRandomVector, Vector } from './vector-n'
 
 export interface Particle {
   dimensions: number

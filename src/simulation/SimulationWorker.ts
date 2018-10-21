@@ -1,4 +1,4 @@
-import { Particle } from './particle'
+import { Particle } from '../particle/particle'
 import { SimulationData, WorkerMessage } from './simulation-worker'
 
 export class SimulationWorker {

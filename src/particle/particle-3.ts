@@ -1,6 +1,7 @@
 import * as THREE from 'three'
-import { Particle } from '../simulation/Particle'
+
 import { Vector } from '../simulation/vector-n'
+import { Particle } from './particle'
 
 export interface Particle3 {
   dimensions: number
@@ -21,7 +22,7 @@ export const toParticle3 = ({
   acceleration: toVector3(acceleration),
 })
 
-export const toVector3 = (v: Vector): THREE.Vector3 => {
+const toVector3 = (v: Vector): THREE.Vector3 => {
   /* tslint:disable:no-magic-numbers */
   const x = v[0] || 0
   const y = v[1] || 0
