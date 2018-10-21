@@ -3,9 +3,13 @@
   "version": "0.0.1",
   "description": "Spreading orbital motion through 01234D & time",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build --out-dir docs ./src/index.html",
     "dev": "parcel --out-dir dev ./src/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc": "tsc --watch --noEmit",
+    "prettier": "prettier './src/**/*.+(ts|tsx)'",
+    "tslint": "tslint -p ./tsconfig.json './src/**/*.+(ts|tsx)'",
+    "formatting": "npm run prettier && npm run tslint"
   },
   "repository": {
     "type": "git",
@@ -35,6 +39,7 @@
   "devDependencies": {
     "@types/three": "0.93.4",
     "parcel-bundler": "1.10.3",
+    "prettier": "1.14.3",
     "tslint": "5.11.0",
     "typescript": "3.1.3"
   },
