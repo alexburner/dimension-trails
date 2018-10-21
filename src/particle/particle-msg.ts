@@ -5,7 +5,7 @@ import { Vector } from './vector-n'
  * TypedArrays are converted to objects by JSON stringification
  * ex: [0.5, 0.5, 0.5] -> { 0: 0.5, 1: 0.5, 2: 0.5 }
  */
-interface VectorMsg {
+export interface VectorMsg {
   [index: number]: number
 }
 

@@ -1,11 +1,11 @@
 import { Particle } from '../particle/particle'
-import { SimulationData, WorkerMessage } from './simulation-worker'
+import { MsgFromMain, MsgToMain } from './messages'
 
 export class SimulationWorker {
-  private readonly worker: Worker = new Worker('./simulation-worker.ts')
+  private readonly worker: Worker = new Worker('./worker.ts')
 
-  constructor(particles: Particle[], listener: (data: SimulationData) => void) {
-    this.worker.addEventListener('message', e => listener(e.data))
+  constructor(particles: Particle[], listener: (data: MsgToMain) => void) {
+    this.worker.addEventListener('message', e => listener(JSON.parse(e.data)))
     this.send({ type: 'init', particles })
   }
 
@@ -13,7 +13,7 @@ export class SimulationWorker {
     this.send({ type: 'tick' })
   }
 
-  private send(message: WorkerMessage) {
-    this.worker.postMessage(message)
+  private send(message: MsgFromMain) {
+    this.worker.postMessage(JSON.stringify(message))
   }
 }

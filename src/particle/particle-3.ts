@@ -1,7 +1,6 @@
 import * as THREE from 'three'
 
-import { Particle } from './particle'
-import { Vector } from './vector-n'
+import { ParticleMsg, VectorMsg } from './particle-msg'
 
 export interface Particle3 {
   dimensions: number
@@ -15,14 +14,14 @@ export const toParticle3 = ({
   position,
   velocity,
   acceleration,
-}: Particle): Particle3 => ({
+}: ParticleMsg): Particle3 => ({
   dimensions,
   position: toVector3(position),
   velocity: toVector3(velocity),
   acceleration: toVector3(acceleration),
 })
 
-const toVector3 = (v: Vector): THREE.Vector3 => {
+const toVector3 = (v: VectorMsg): THREE.Vector3 => {
   /* tslint:disable:no-magic-numbers */
   const x = v[0] || 0
   const y = v[1] || 0
