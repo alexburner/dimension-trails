@@ -13,7 +13,7 @@
     "tsc": "tsc --watch --noEmit",
     "prettier": "prettier --write './src/**/*.+(json|md|scss|ts|tsx)'",
     "tslint": "tslint --fix -p ./tsconfig.json './src/**/*.+(ts|tsx)'",
-    "formatting": "npm run prettier && npm run tslint",
+    "format": "npm run prettier && npm run tslint",
     "clean": "rm -rf .cache && rm -rf dev"
   },
   "repository": {

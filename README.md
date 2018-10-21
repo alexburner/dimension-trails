@@ -45,12 +45,12 @@ Run TypeScript compiler + watch (no emit, types only)
 npm run tsc
 ```
 
-## formatting
+## format
 
-Run `prettier` and `tslint` auto-formatting
+Run `prettier` and `tslint --fix`
 
 ```sh
-npm run formatting # prettier + tslint
+npm run format # prettier + tslint
 npm run prettier
 npm run tslint
 ```
