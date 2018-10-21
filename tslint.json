@@ -23,7 +23,10 @@
     "ban-types": {
       "options": [
         ["Object", "Avoid using the `Object` type. Did you mean `object`?"],
-        ["Function", "Avoid using the `Function` type. Prefer a specific function type, like `() => void`."],
+        [
+          "Function",
+          "Avoid using the `Function` type. Prefer a specific function type, like `() => void`."
+        ],
         ["Boolean", "Avoid using the `Boolean` type. Did you mean `boolean`?"],
         ["Number", "Avoid using the `Number` type. Did you mean `number`?"],
         ["String", "Avoid using the `String` type. Did you mean `string`?"],
@@ -36,28 +39,34 @@
       "options": ["check-space"]
     },
     "curly": [true, "ignore-same-line"],
-    "early-exit": [true, {
-      "max-length": 4
-    }],
+    "early-exit": [
+      true,
+      {
+        "max-length": 4
+      }
+    ],
     "interface-over-type-literal": true,
     "member-access": [true, "check-accessor", "check-parameter-property"],
-    "member-ordering": [true, {
-      "order": [
-        "public-static-field",
-        "protected-static-field",
-        "private-static-field",
-        "public-static-method",
-        "protected-static-method",
-        "private-static-method",
-        "public-instance-field",
-        "protected-instance-field",
-        "private-instance-field",
-        "constructor",
-        "public-instance-method",
-        "protected-instance-method",
-        "private-instance-method"
-      ]
-    }],
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "public-static-field",
+          "protected-static-field",
+          "private-static-field",
+          "public-static-method",
+          "protected-static-method",
+          "private-static-method",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
+        ]
+      }
+    ],
     "naming-convention": [
       true,
       {
@@ -89,7 +98,6 @@
     "no-for-in": true,
     "no-invalid-template-strings": true,
     "no-invalid-this": true,
-    "no-magic-numbers": [true, -1, 0, 1, 2],
     "no-namespace": true,
     "no-return-await": true,
     "no-shadowed-variable": true,
@@ -98,9 +106,12 @@
     "no-string-literal": true,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
-    "no-this-assignment": [true, {
-      "allow-destructuring": true
-    }],
+    "no-this-assignment": [
+      true,
+      {
+        "allow-destructuring": true
+      }
+    ],
     "no-typeof-undefined": true,
     "no-unbound-method": [true, "ignore-static"],
     "no-unnecessary-bind": true,
@@ -119,9 +130,12 @@
     },
     "only-arrow-functions": true,
     "ordered-imports": true,
-    "prefer-const": [true, {
-      "destructuring": "all"
-    }],
+    "prefer-const": [
+      true,
+      {
+        "destructuring": "all"
+      }
+    ],
     "prefer-function-over-method": true,
     "prefer-method-signature": true,
     "prefer-object-spread": true,
