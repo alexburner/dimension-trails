@@ -2,6 +2,10 @@
   "name": "dimension-spread",
   "version": "0.0.1",
   "description": "Spreading orbital motion through 01234D & time",
+  "engines": {
+    "node": "10.12.0",
+    "npm": "6.4.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build --out-dir docs ./src/index.html",
