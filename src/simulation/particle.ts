@@ -1,41 +1,41 @@
-import { map, each, times } from "../util";
-import { Particle } from "./particle";
-import { radialRandomVector, backfill, Vector } from "./vector-n";
+import { map, each, times } from '../util'
+import { Particle } from './particle'
+import { radialRandomVector, backfill, Vector } from './vector-n'
 
 export interface Particle {
-  dimensions: number;
-  position: Vector;
-  velocity: Vector;
-  acceleration: Vector;
+  dimensions: number
+  position: Vector
+  velocity: Vector
+  acceleration: Vector
 }
 
-const FILL_PROPS: (keyof Particle)[] = ["position", "velocity", "acceleration"];
+const FILL_PROPS: (keyof Particle)[] = ['position', 'velocity', 'acceleration']
 
 const makeFreshParticle = (dimensions: number): Particle => ({
   dimensions,
   position: radialRandomVector(dimensions),
   velocity: radialRandomVector(dimensions),
-  acceleration: radialRandomVector(dimensions)
-});
+  acceleration: radialRandomVector(dimensions),
+})
 
 export const makeFreshParticles = (
   dimensions: number,
-  count: number
-): Particle[] => times(count, () => makeFreshParticle(dimensions));
+  count: number,
+): Particle[] => times(count, () => makeFreshParticle(dimensions))
 
 export const makeFilledParticles = (
   dimensions: number,
-  oldParticles: Particle[]
+  oldParticles: Particle[],
 ): Particle[] =>
   map(oldParticles, oldParticle => {
-    const newParticle = makeFreshParticle(dimensions);
+    const newParticle = makeFreshParticle(dimensions)
     each(
       FILL_PROPS,
       prop =>
         (newParticle[prop] = backfill(
           newParticle[prop] as Vector,
-          oldParticle[prop] as Vector
-        ))
-    );
-    return newParticle;
-  });
+          oldParticle[prop] as Vector,
+        )),
+    )
+    return newParticle
+  })

@@ -7,7 +7,7 @@
     "build": "parcel build --out-dir docs ./src/index.html",
     "dev": "parcel --out-dir dev ./src/index.html",
     "tsc": "tsc --watch --noEmit",
-    "prettier": "prettier './src/**/*.+(ts|tsx)'",
+    "prettier": "prettier --write './src/**/*.+(ts|tsx)'",
     "tslint": "tslint -p ./tsconfig.json './src/**/*.+(ts|tsx)'",
     "formatting": "npm run prettier && npm run tslint"
   },

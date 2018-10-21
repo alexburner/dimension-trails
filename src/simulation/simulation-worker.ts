@@ -1,30 +1,30 @@
-import { Neighborhood, getNeighborhood } from "./neighbors";
-import { limitMagnitude, add } from "./vector-n";
-import { Particle } from "./particle";
-import { multiply } from "./vector-n";
-import { assertNever, each } from "../util";
-import { BehaviorSpecs, behavior, BehaviorNames } from "./behavior/behavior";
-import { BoundingNames, bounding } from "./bounding/bounding";
+import { Neighborhood, getNeighborhood } from './neighbors'
+import { limitMagnitude, add } from './vector-n'
+import { Particle } from './particle'
+import { multiply } from './vector-n'
+import { assertNever, each } from '../util'
+import { BehaviorSpecs, behavior, BehaviorNames } from './behavior/behavior'
+import { BoundingNames, bounding } from './bounding/bounding'
 
 export interface SimulationConfig {
-  behaviorSpec: BehaviorSpecs;
-  boundingName: BoundingNames;
+  behaviorSpec: BehaviorSpecs
+  boundingName: BoundingNames
   max: {
-    force: number;
-    speed: number;
-    radius: number;
-  };
+    force: number
+    speed: number
+    radius: number
+  }
 }
 
 export interface SimulationData {
-  particles: Particle[];
-  neighborhood: Neighborhood;
+  particles: Particle[]
+  neighborhood: Neighborhood
 }
 
 export type WorkerMessage =
-  | { type: "init"; particles: Particle[]; config?: SimulationConfig }
-  | { type: "tick" }
-  | { type: "destroy" };
+  | { type: 'init'; particles: Particle[]; config?: SimulationConfig }
+  | { type: 'tick' }
+  | { type: 'destroy' }
 
 /**
  * TypeScript currently does not support loading both "DOM" and "WebWorker"
@@ -41,7 +41,7 @@ export type WorkerMessage =
  * https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope
  *
  */
-const context = self as any;
+const context = self as any
 // TODO const context = (self as any) as DedicatedWorkerGlobalScope;
 
 const DEFAULT_CONFIG = {
@@ -51,92 +51,92 @@ const DEFAULT_CONFIG = {
       mass: {
         g: 1,
         orbiter: 10,
-        attractor: 30
+        attractor: 30,
       },
       distance: {
         min: 50,
-        max: 250
-      }
-    }
+        max: 250,
+      },
+    },
   },
   boundingName: BoundingNames.CenterScaling,
   max: {
     force: 1,
     speed: 1,
-    radius: 50
-  }
-};
+    radius: 50,
+  },
+}
 
 const simulation: {
-  config: SimulationConfig;
-  data: SimulationData;
+  config: SimulationConfig
+  data: SimulationData
 } = {
   config: DEFAULT_CONFIG,
   data: {
     particles: [],
-    neighborhood: []
-  }
-};
+    neighborhood: [],
+  },
+}
 
 const isWorkerMessage = (val: any): val is WorkerMessage =>
-  val && typeof val.type === "string"; // safe enough
+  val && typeof val.type === 'string' // safe enough
 
-context.addEventListener("message", (e: MessageEvent) => {
-  const message = e.data;
-  if (!isWorkerMessage(message)) return;
+context.addEventListener('message', (e: MessageEvent) => {
+  const message = e.data
+  if (!isWorkerMessage(message)) return
   switch (message.type) {
-    case "init": {
-      simulation.config = message.config || DEFAULT_CONFIG;
-      simulation.data.particles = message.particles;
-      simulation.data.neighborhood = getNeighborhood(message.particles);
-      break;
+    case 'init': {
+      simulation.config = message.config || DEFAULT_CONFIG
+      simulation.data.particles = message.particles
+      simulation.data.neighborhood = getNeighborhood(message.particles)
+      break
     }
 
-    case "tick": {
-      tick();
-      context.postMessage(simulation.data);
-      break;
+    case 'tick': {
+      tick()
+      context.postMessage(simulation.data)
+      break
     }
 
-    case "destroy": {
-      context.close();
-      break;
+    case 'destroy': {
+      context.close()
+      break
     }
 
     default: {
-      assertNever(message);
+      assertNever(message)
     }
   }
-});
+})
 
 const tick = () => {
   // Reset accelerations
   each(
     simulation.data.particles,
-    p => (p.acceleration = multiply(p.acceleration, 0))
-  );
+    p => (p.acceleration = multiply(p.acceleration, 0)),
+  )
 
   // Apply particle behavior
   behavior(
     simulation.data.particles,
     simulation.data.neighborhood,
-    simulation.config.behaviorSpec
-  );
+    simulation.config.behaviorSpec,
+  )
 
   // Update positions
   each(simulation.data.particles, p => {
-    p.velocity = add(p.velocity, p.acceleration);
-    p.velocity = limitMagnitude(p.velocity, simulation.config.max.speed);
-    p.position = add(p.position, p.velocity);
-  });
+    p.velocity = add(p.velocity, p.acceleration)
+    p.velocity = limitMagnitude(p.velocity, simulation.config.max.speed)
+    p.position = add(p.position, p.velocity)
+  })
 
   // Apply particle bounding
   bounding(
     simulation.data.particles,
     simulation.config.max.radius,
-    simulation.config.boundingName
-  );
+    simulation.config.boundingName,
+  )
 
   // Re-calculate Particle relations
-  simulation.data.neighborhood = getNeighborhood(simulation.data.particles);
-};
+  simulation.data.neighborhood = getNeighborhood(simulation.data.particles)
+}
