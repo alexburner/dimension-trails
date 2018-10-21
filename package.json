@@ -11,7 +11,7 @@
     "build": "parcel build --out-dir docs ./src/index.html",
     "dev": "parcel --out-dir dev ./src/index.html",
     "tsc": "tsc --watch --noEmit",
-    "prettier": "prettier --write './src/**/*.+(ts|tsx|json|css)'",
+    "prettier": "prettier --write './src/**/*.+(ts|tsx|json|scss)'",
     "tslint": "tslint --fix -p ./tsconfig.json './src/**/*.+(ts|tsx)'",
     "formatting": "npm run prettier && npm run tslint",
     "clean": "rm -rf .cache && rm -rf docs dev"
@@ -45,6 +45,7 @@
     "@types/three": "0.93.4",
     "parcel-bundler": "1.10.3",
     "prettier": "1.14.3",
+    "sass": "^1.14.3",
     "tslint": "5.11.0",
     "tslint-consistent-codestyle": "1.13.3",
     "tslint-microsoft-contrib": "5.2.1",
