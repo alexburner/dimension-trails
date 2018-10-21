@@ -11,7 +11,7 @@
     "build": "parcel build --out-dir docs ./src/index.html",
     "dev": "parcel --out-dir dev ./src/index.html",
     "tsc": "tsc --watch --noEmit",
-    "prettier": "prettier --write './src/**/*.+(ts|tsx|json|scss)'",
+    "prettier": "prettier --write './src/**/*.+(json|md|scss|ts|tsx)'",
     "tslint": "tslint --fix -p ./tsconfig.json './src/**/*.+(ts|tsx)'",
     "formatting": "npm run prettier && npm run tslint",
     "clean": "rm -rf .cache && rm -rf docs dev"
