@@ -6,7 +6,7 @@ import { Particle3 } from './particle3'
 export class Row {
   private readonly group: THREE.Group
 
-  constructor(x, y, z) {
+  constructor(x: number, y: number, z: number) {
     this.group = new THREE.Group()
     console.log(x, y, z)
   }
