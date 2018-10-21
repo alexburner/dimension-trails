@@ -1,4 +1,10 @@
 #
+# Project-specific
+#
+dev/
+
+#
+# Node-specific
 # src = https://github.com/github/gitignore/blob/master/Node.gitignore
 #
 

@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Spreading orbital motion through 01234D & time",
   "scripts": {
-    "build": "parcel build ./src/index.html",
-    "dev": "parcel ./src/index.html",
+    "build": "parcel build --out-dir docs ./src/index.html",
+    "dev": "parcel --out-dir dev ./src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
