@@ -1,5 +1,6 @@
 import { getNeighborhood, Neighborhood } from '../particle/neighbors'
 import { Particle } from '../particle/particle'
+import { Particle3 } from '../particle/particle-3'
 import { add, limitMagnitude, multiply } from '../particle/vector-n'
 import { each } from '../util'
 import { behavior, BehaviorNames, BehaviorSpecs } from './behavior/behavior'
@@ -13,6 +14,16 @@ export interface SimulationConfig {
     speed: number
     radius: number
   }
+}
+
+export interface SimulationData {
+  particles: Particle[]
+  neighborhood: Neighborhood
+}
+
+export interface SimulationData3 {
+  particles: Particle3[]
+  neighborhood: Neighborhood
 }
 
 const DEFAULT_CONFIG: SimulationConfig = {
@@ -34,7 +45,7 @@ const DEFAULT_CONFIG: SimulationConfig = {
   max: {
     force: 1,
     speed: 1,
-    radius: 50,
+    radius: 12,
   },
 }
 
@@ -76,10 +87,7 @@ export class Simulation {
     this.neighborhood = getNeighborhood(particles)
   }
 
-  public getData(): {
-    particles: Particle[]
-    neighborhood: Neighborhood
-  } {
+  public getData(): SimulationData {
     return {
       particles: this.particles,
       neighborhood: this.neighborhood,

@@ -7,51 +7,89 @@ import { each, map, times } from './util'
 
 const DIMENSIONS = 4
 const PARTICLES = 5
+const SIZE = {
+  width: 900,
+  height: 600,
+  radius: 80,
+}
 
-const canvas = document.getElementById('canvas')
-if (!canvas) throw new Error('Failed to find canvas')
+//////////////////////////
+// Create & insert canvas
+////////////////////////
+const target = document.getElementById('target')
+if (!target) throw new Error('Failed to find #target')
+const canvas = document.createElement('canvas')
+canvas.width = SIZE.width
+canvas.height = SIZE.height
+target.appendChild(canvas)
 
-const renderer = new Renderer(canvas as HTMLCanvasElement)
+///////////////////////////
+// Create threejs renderer
+/////////////////////////
+const renderer = new Renderer(canvas)
 
-const ROW_HEIGHT = 100
-const ROW_WIDTH = 600
+/////////////////////////////
+// Create visualization rows
+///////////////////////////
+const rowCount = DIMENSIONS + 1
+const rowHeight = 140
+const rowWidth = SIZE.width
 const rows = times(
-  DIMENSIONS,
-  i => new Row(ROW_WIDTH, ROW_HEIGHT, 0, i * ROW_HEIGHT + ROW_HEIGHT / 2, 0),
+  rowCount,
+  i =>
+    new Row({
+      width: rowWidth,
+      height: rowHeight,
+      radius: SIZE.radius,
+      x: 0,
+      y: 80 + i * -30,
+      z: 0,
+    }),
 )
+// Add row THREE.Objects to renderer Scene
 each(rows, row => renderer.addObject(row.getObject()))
 
+///////////////////////////////////
+// Create initial particle spreads
+/////////////////////////////////
 const particleSets: any[] = times(
-  DIMENSIONS,
+  rowCount,
   (i, prevParticles) =>
     i === 0
       ? makeFreshParticles(i, PARTICLES)
       : makeFilledParticles(i, prevParticles[i - 1]),
 )
 
+/////////////////////////////////
+// Create simulation web workers
+///////////////////////////////
 const workers = times(
   particleSets.length,
   i =>
-    new SimulationWorker(
-      particleSets[i],
-      data => {
-        const particles = map(data.particles, toParticle3)
-        const neighborhood = data.neighborhood
-        rows[i].update(particles, neighborhood)
-      },
+    new SimulationWorker(particleSets[i], data => {
+      const particles = map(data.particles, toParticle3)
+      const neighborhood = data.neighborhood
+      // Update visualization row with new data
+      rows[i].update({ particles, neighborhood })
       /**
        * When second column added:
        * data => {
-       *   rowSets[0][i].update(data)
+       *   const particles = map(data.particles, toParticle3)
+       *   const neighborhood = data.neighborhood
+       *   const data3 = { particles, neighborhood }
+       *   rows[i].update(data3)
        *   // Downward projection of 4D simulation through second column
-       *   if (i === 4) each(rowsSet[1], row => row.update(data))
+       *   if (i === 4) each(rowsSet[1], row => row.update(data3))
        * }
        */
-    ),
+    }),
 )
 
+/////////////////////////
+// Create animation loop
+///////////////////////
 const animationLoop = () => {
-  // window.requestAnimationFrame(animationLoop);
+  window.requestAnimationFrame(animationLoop)
   each(workers, worker => worker.tick())
   each(rows, row => row.rotate())
   renderer.render()

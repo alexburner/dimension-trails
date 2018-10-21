@@ -13,6 +13,10 @@ type TypedArray =
   | Float32Array
   | Float64Array
 
+/**
+ * Shuffle array in place
+ * https://en.wikipedia.org/wiki/Fisher–Yates_shuffle#The_modern_algorithm
+ */
 export const shuffle = (list: TypedArray | any[]): void => {
   for (let i = list.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
@@ -22,6 +26,9 @@ export const shuffle = (list: TypedArray | any[]): void => {
   }
 }
 
+/**
+ * forEach() at for-loop speeds (https://jsperf.com/array-iteration-yo)
+ */
 export const each = <T>(
   list: T[],
   iterator: (t: T, i: number, list: T[]) => void,
@@ -31,17 +38,9 @@ export const each = <T>(
   }
 }
 
-export const map = <T, U>(
-  list: T[],
-  iterator: (t: T, i: number, list: T[]) => U,
-): U[] => {
-  const output: U[] = new Array(list.length)
-  for (let i = 0, l = list.length; i < l; i++) {
-    output[i] = iterator(list[i], i, list)
-  }
-  return output
-}
-
+/**
+ * Make a new array & fill with iterator results
+ */
 export const times = <T>(
   length: number,
   iterator: (i: number, list: T[]) => T,
@@ -53,6 +52,23 @@ export const times = <T>(
   return output
 }
 
+/**
+ * TODO: benchmark
+ */
+export const map = <T, U>(
+  list: T[],
+  iterator: (t: T, i: number, list: T[]) => U,
+): U[] => {
+  const output: U[] = new Array(list.length)
+  for (let i = 0, l = list.length; i < l; i++) {
+    output[i] = iterator(list[i], i, list)
+  }
+  return output
+}
+
+/**
+ * TODO: benchmark
+ */
 export const reduce = <T, M>(
   list: T[],
   iterator: (memo: M, t: T, i: number, list: T[]) => M,
@@ -64,11 +80,41 @@ export const reduce = <T, M>(
   return memo
 }
 
+/**
+ * Clamp a number to within a range
+ */
 export const clamp = (n: number, min: number, max: number): number =>
   Math.max(min, Math.min(max, n))
 
+/**
+ * ~50% probability boolean
+ */
 export const coinFlip = (): boolean => Boolean(Math.round(Math.random()))
 
+/**
+ * TypeScript helper to ensure exhaustive case checks
+ */
 export const assertNever = (value: never): never => {
   throw new TypeError(`never violation: ${JSON.stringify(value)}`)
+}
+
+/**
+ * Limit a list to a size, FIFO
+ */
+export class RecentQueue<T> {
+  private readonly queue: T[] = []
+  private readonly limit: number
+
+  constructor(limit: number) {
+    this.limit = limit
+  }
+
+  public add(value: T): void {
+    this.queue.unshift(value)
+    if (this.queue.length > this.limit) this.queue.pop()
+  }
+
+  public values(): T[] {
+    return this.queue
+  }
 }

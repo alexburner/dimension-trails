@@ -32,7 +32,7 @@ export class Renderer {
       FAR,
     )
     this.camera.position.x = 0
-    this.camera.position.y = 7 * ZOOM
+    // this.camera.position.y = 7 * ZOOM
     this.camera.position.z = 40 * ZOOM
   }
 

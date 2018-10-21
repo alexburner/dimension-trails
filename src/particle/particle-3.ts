@@ -9,6 +9,13 @@ export interface Particle3 {
   acceleration: THREE.Vector3
 }
 
+export const cloneParticle3 = (p: Particle3): Particle3 => ({
+  dimensions: p.dimensions,
+  position: p.position.clone(),
+  velocity: p.velocity.clone(),
+  acceleration: p.acceleration.clone(),
+})
+
 export const toParticle3 = ({
   dimensions,
   position,
