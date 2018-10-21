@@ -1,5 +1,5 @@
 import { Particle } from "./particle";
-import { subtract, getMagnitude } from "./vector-n";
+import { subtract, getMagnitude, Vector } from "./vector-n";
 import { map, each } from "../util";
 
 /**
@@ -8,7 +8,7 @@ import { map, each } from "../util";
 export interface Neighbor {
   index: number;
   distance: number;
-  delta: Float32Array;
+  delta: Vector;
 }
 
 /**

@@ -1,21 +1,21 @@
 import { map, each, times } from "../util";
 import { Particle } from "./particle";
-import { radialRandomize, backfill } from "./vector-n";
+import { radialRandomVector, backfill, Vector } from "./vector-n";
 
 export interface Particle {
   dimensions: number;
-  position: Float32Array;
-  velocity: Float32Array;
-  acceleration: Float32Array;
+  position: Vector;
+  velocity: Vector;
+  acceleration: Vector;
 }
 
-const FILL_PROPS: (keyof Particle)[] = ["position", "velocity", "dimensions"];
+const FILL_PROPS: (keyof Particle)[] = ["position", "velocity", "acceleration"];
 
 const makeFreshParticle = (dimensions: number): Particle => ({
   dimensions,
-  position: radialRandomize(new Float32Array(dimensions)),
-  velocity: radialRandomize(new Float32Array(dimensions)),
-  acceleration: radialRandomize(new Float32Array(dimensions))
+  position: radialRandomVector(dimensions),
+  velocity: radialRandomVector(dimensions),
+  acceleration: radialRandomVector(dimensions)
 });
 
 export const makeFreshParticles = (
@@ -33,8 +33,8 @@ export const makeFilledParticles = (
       FILL_PROPS,
       prop =>
         (newParticle[prop] = backfill(
-          newParticle[prop] as Float32Array,
-          oldParticle[prop] as Float32Array
+          newParticle[prop] as Vector,
+          oldParticle[prop] as Vector
         ))
     );
     return newParticle;

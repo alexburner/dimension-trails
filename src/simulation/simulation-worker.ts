@@ -50,12 +50,12 @@ const DEFAULT_CONFIG = {
     config: {
       mass: {
         g: 1,
-        orbiter: 1,
-        attractor: 1
+        orbiter: 10,
+        attractor: 30
       },
       distance: {
-        min: 1,
-        max: 1
+        min: 50,
+        max: 250
       }
     }
   },
@@ -63,7 +63,7 @@ const DEFAULT_CONFIG = {
   max: {
     force: 1,
     speed: 1,
-    radius: 100
+    radius: 50
   }
 };
 
@@ -82,7 +82,7 @@ const isWorkerMessage = (val: any): val is WorkerMessage =>
   val && typeof val.type === "string"; // safe enough
 
 context.addEventListener("message", (e: MessageEvent) => {
-  const message = JSON.parse(e.data);
+  const message = e.data;
   if (!isWorkerMessage(message)) return;
   switch (message.type) {
     case "init": {
@@ -94,7 +94,7 @@ context.addEventListener("message", (e: MessageEvent) => {
 
     case "tick": {
       tick();
-      context.postMessage(JSON.stringify(simulation.data));
+      context.postMessage(simulation.data);
       break;
     }
 

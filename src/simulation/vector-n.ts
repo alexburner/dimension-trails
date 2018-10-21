@@ -1,6 +1,6 @@
 import { coinFlip, shuffle } from "../util";
 
-type Vector = Float32Array;
+export type Vector = Float32Array;
 type VectorMath = (a: Vector, b: Vector | number) => Vector;
 type NumberMath = (an: number, bn: number) => number;
 
@@ -64,11 +64,14 @@ export const getAverage = (vectors: Vector[]): Vector => {
   return average;
 };
 
-export const radialRandomize = (v: Vector, radius: number = 1): Vector => {
+export const radialRandomVector = (
+  length: number,
+  radius: number = 1
+): Vector => {
   // Algorithm via Colin Ballast
-  let result = new Float32Array(v);
+  let result = new Float32Array(length);
   let radiusSq = radius * radius;
-  for (let i = 0, l = v.length; i < l; i++) {
+  for (let i = 0; i < length; i++) {
     const value = Math.random() * Math.sqrt(radiusSq);
     const valueSq = value * value;
     radiusSq -= valueSq;

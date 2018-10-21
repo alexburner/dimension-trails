@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import { Particle } from "./Particle";
+import { Particle } from "../simulation/Particle";
+import { Vector } from "../simulation/vector-n";
 
 export interface Particle3 {
   dimensions: number;
@@ -20,7 +21,7 @@ export const toParticle3 = ({
   acceleration: toVector3(acceleration)
 });
 
-export const toVector3 = (v: Float32Array): THREE.Vector3 => {
+export const toVector3 = (v: Vector): THREE.Vector3 => {
   const x = v[0] || 0;
   const y = v[1] || 0;
   const z = v[2] || 0;

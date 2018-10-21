@@ -46,7 +46,7 @@ const workers = times(
 );
 
 const animationLoop = () => {
-  window.requestAnimationFrame(animationLoop);
+  // window.requestAnimationFrame(animationLoop);
   each(workers, worker => worker.tick());
   each(rows, row => row.rotate());
   renderer.render();

@@ -5,7 +5,7 @@ export class SimulationWorker {
   private readonly worker: Worker = new Worker("./simulation-worker.ts");
 
   constructor(particles: Particle[], listener: (data: SimulationData) => void) {
-    this.worker.addEventListener("message", e => listener(JSON.parse(e.data)));
+    this.worker.addEventListener("message", e => listener(e.data));
     this.send({ type: "init", particles });
   }
 
@@ -14,6 +14,6 @@ export class SimulationWorker {
   }
 
   private send(message: WorkerMessage) {
-    this.worker.postMessage(JSON.stringify(message));
+    this.worker.postMessage(message);
   }
 }
