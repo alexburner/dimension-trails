@@ -81,7 +81,7 @@ export const radialRandomVector = (
   return result
 }
 
-export const backfill = (newV: Vector, oldV: Vector): Vector => {
+export const fill = (newV: Vector, oldV: Vector): Vector => {
   const filled: Vector = new Float32Array(newV.length)
   for (let i = 0, l = newV.length; i < l; i++) {
     filled[i] = i < oldV.length ? oldV[i] : newV[i]

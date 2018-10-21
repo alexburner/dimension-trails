@@ -1,5 +1,5 @@
-import { each, map, times } from '../util'
-import { backfill, radialRandomVector, Vector } from './vector-n'
+import { map, times } from '../util'
+import { fill, radialRandomVector, Vector } from './vector-n'
 
 export interface Particle {
   dimensions: number
@@ -7,15 +7,6 @@ export interface Particle {
   velocity: Vector
   acceleration: Vector
 }
-
-const FILL_PROPS: (keyof Particle)[] = ['position', 'velocity', 'acceleration']
-
-const makeFreshParticle = (dimensions: number): Particle => ({
-  dimensions,
-  position: radialRandomVector(dimensions),
-  velocity: radialRandomVector(dimensions),
-  acceleration: radialRandomVector(dimensions),
-})
 
 export const makeFreshParticles = (
   dimensions: number,
@@ -25,16 +16,19 @@ export const makeFreshParticles = (
 export const makeFilledParticles = (
   dimensions: number,
   oldParticles: Particle[],
-): Particle[] =>
-  map(oldParticles, oldParticle => {
-    const newParticle = makeFreshParticle(dimensions)
-    each(
-      FILL_PROPS,
-      prop =>
-        (newParticle[prop] = backfill(
-          newParticle[prop] as Vector,
-          oldParticle[prop] as Vector,
-        )),
-    )
-    return newParticle
-  })
+): Particle[] => map(oldParticles, oldP => makeFilledParticle(dimensions, oldP))
+
+const makeFreshParticle = (dimensions: number): Particle => ({
+  dimensions,
+  position: radialRandomVector(dimensions),
+  velocity: radialRandomVector(dimensions),
+  acceleration: radialRandomVector(dimensions),
+})
+
+const makeFilledParticle = (dimensions: number, oldP: Particle): Particle => {
+  const newP = makeFreshParticle(dimensions)
+  newP.position = fill(newP.position, oldP.position)
+  newP.velocity = fill(newP.velocity, oldP.velocity)
+  newP.acceleration = fill(newP.acceleration, oldP.acceleration)
+  return newP
+}
