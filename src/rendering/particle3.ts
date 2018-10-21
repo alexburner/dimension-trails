@@ -22,8 +22,10 @@ export const toParticle3 = ({
 })
 
 export const toVector3 = (v: Vector): THREE.Vector3 => {
+  /* tslint:disable:no-magic-numbers */
   const x = v[0] || 0
   const y = v[1] || 0
   const z = v[2] || 0
+  /* tslint:enable:no-magic-numbers */
   return new THREE.Vector3(x, y, z)
 }

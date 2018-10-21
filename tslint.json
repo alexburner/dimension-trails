@@ -89,6 +89,7 @@
     "no-for-in": true,
     "no-invalid-template-strings": true,
     "no-invalid-this": true,
+    "no-magic-numbers": [true, -1, 0, 1, 2],
     "no-namespace": true,
     "no-return-await": true,
     "no-shadowed-variable": true,

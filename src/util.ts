@@ -67,7 +67,7 @@ export const reduce = <T, M>(
 export const clamp = (n: number, min: number, max: number): number =>
   Math.max(min, Math.min(max, n))
 
-export const coinFlip = (): boolean => Math.random() < 0.5
+export const coinFlip = (): boolean => Boolean(Math.round(Math.random()))
 
 export const assertNever = (value: never): never => {
   throw new TypeError(`never violation: ${JSON.stringify(value)}`)
