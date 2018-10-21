@@ -1,6 +1,5 @@
-import { map, each, times } from '../util'
-import { Particle } from './particle'
-import { radialRandomVector, backfill, Vector } from './vector-n'
+import { each, map, times } from '../util'
+import { backfill, radialRandomVector, Vector } from './vector-n'
 
 export interface Particle {
   dimensions: number

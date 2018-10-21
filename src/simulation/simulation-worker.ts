@@ -1,10 +1,9 @@
-import { Neighborhood, getNeighborhood } from './neighbors'
-import { limitMagnitude, add } from './vector-n'
-import { Particle } from './particle'
-import { multiply } from './vector-n'
 import { assertNever, each } from '../util'
-import { BehaviorSpecs, behavior, BehaviorNames } from './behavior/behavior'
-import { BoundingNames, bounding } from './bounding/bounding'
+import { behavior, BehaviorNames, BehaviorSpecs } from './behavior/behavior'
+import { bounding, BoundingNames } from './bounding/bounding'
+import { getNeighborhood, Neighborhood } from './neighbors'
+import { Particle } from './particle'
+import { add, limitMagnitude, multiply } from './vector-n'
 
 export interface SimulationConfig {
   behaviorSpec: BehaviorSpecs

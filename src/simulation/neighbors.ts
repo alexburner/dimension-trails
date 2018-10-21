@@ -1,6 +1,6 @@
+import { each, map } from '../util'
 import { Particle } from './particle'
-import { subtract, getMagnitude, Vector } from './vector-n'
-import { map, each } from '../util'
+import { getMagnitude, subtract, Vector } from './vector-n'
 
 /**
  * A relation from one Particle to another

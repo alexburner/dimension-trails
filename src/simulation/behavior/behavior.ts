@@ -1,6 +1,6 @@
-import { Neighborhood } from './../neighbors'
 import { Particle } from '../particle'
-import { OrbitsSpec, orbits } from './orbits'
+import { Neighborhood } from './../neighbors'
+import { orbits, OrbitsSpec } from './orbits'
 
 export type BehaviorSpecs = OrbitsSpec
 

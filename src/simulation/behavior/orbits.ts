@@ -1,12 +1,12 @@
-import { BehaviorNames, Behavior } from './behavior'
-import { each, clamp } from '../../util'
+import { clamp, each } from '../../util'
 import {
-  multiply,
-  getMagnitudeSq,
-  setMagnitude,
-  divide,
   add,
+  divide,
+  getMagnitudeSq,
+  multiply,
+  setMagnitude,
 } from '../vector-n'
+import { Behavior, BehaviorNames } from './behavior'
 
 export interface OrbitsSpec {
   name: BehaviorNames.Orbits

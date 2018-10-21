@@ -16,10 +16,12 @@ export class Row {
   }
 
   public update(particles: Particle3[], neighborhood: Neighborhood) {
+    console.log(this)
     console.log(particles, neighborhood)
   }
 
   public rotate() {
+    console.log(this)
     console.log('rotate')
   }
 }

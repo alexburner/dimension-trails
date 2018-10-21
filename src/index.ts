@@ -1,9 +1,9 @@
 import { toParticle3 } from './rendering/Particle3'
-import { times, each, map } from './util'
-import { SimulationWorker } from './simulation/SimulationWorker'
-import { makeFreshParticles, makeFilledParticles } from './simulation/particle'
 import { Renderer } from './rendering/Renderer'
 import { Row } from './rendering/Row'
+import { makeFilledParticles, makeFreshParticles } from './simulation/particle'
+import { SimulationWorker } from './simulation/SimulationWorker'
+import { each, map, times } from './util'
 
 const DIMENSIONS = 4
 const PARTICLES = 5

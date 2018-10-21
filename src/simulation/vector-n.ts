@@ -69,7 +69,7 @@ export const radialRandomVector = (
   radius: number = 1,
 ): Vector => {
   // Algorithm via Colin Ballast
-  let result = new Float32Array(length)
+  const result = new Float32Array(length)
   let radiusSq = radius * radius
   for (let i = 0; i < length; i++) {
     const value = Math.random() * Math.sqrt(radiusSq)

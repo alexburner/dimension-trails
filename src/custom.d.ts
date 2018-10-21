@@ -16,9 +16,9 @@ interface WorkerGlobalScope
   readonly caches: CacheStorage
   readonly isSecureContext: boolean
   readonly location: WorkerLocation
-  onerror: (this: WorkerGlobalScope, ev: ErrorEvent) => any
   readonly performance: Performance
   readonly self: WorkerGlobalScope
+  onerror(this: WorkerGlobalScope, ev: ErrorEvent): any
   msWriteProfilerMark(profilerMarkName: string): void
   addEventListener<K extends keyof WorkerGlobalScopeEventMap>(
     type: K,
@@ -45,7 +45,7 @@ interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
 }
 
 interface DedicatedWorkerGlobalScope extends WorkerGlobalScope {
-  onmessage: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any
+  onmessage(this: DedicatedWorkerGlobalScope, ev: MessageEvent): any
   close(): void
   postMessage<T>(message: T, transfer?: any[]): void
   addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(

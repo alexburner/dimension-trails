@@ -1,6 +1,6 @@
+import { each, reduce } from '../../util'
 import { getMagnitudeSq, multiply } from './../vector-n'
 import { Bounding } from './bounding'
-import { reduce, each } from '../../util'
 
 export const centerScaling: Bounding = (particles, radius) => {
   if (particles.length < 1) return
