@@ -6,6 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build --out-dir docs ./src/index.html",
     "dev": "parcel --out-dir dev ./src/index.html",
+    "clean": "rm -rf .cache && rm -rf docs dev",
     "tsc": "tsc --watch --noEmit",
     "prettier": "prettier --write './src/**/*.+(ts|tsx|json|css)'",
     "tslint": "tslint --fix -p ./tsconfig.json './src/**/*.+(ts|tsx)'",
