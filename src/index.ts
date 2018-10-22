@@ -11,11 +11,10 @@ import { each, map, times } from './util'
 
 const DIMENSIONS = 4
 const PARTICLES = 5
-const SIZE = {
-  width: 900,
-  height: 700,
-  radius: 12,
-}
+
+const WIDTH = 900
+const HEIGHT = 700
+const RADIUS = 12
 
 //////////////////////////
 // Create & insert canvas
@@ -23,8 +22,8 @@ const SIZE = {
 const target = document.getElementById('target')
 if (!target) throw new Error('Failed to find #target')
 const canvas = document.createElement('canvas')
-canvas.width = SIZE.width
-canvas.height = SIZE.height
+canvas.width = WIDTH
+canvas.height = HEIGHT
 target.appendChild(canvas)
 
 ///////////////////////////
@@ -36,17 +35,14 @@ const renderer = new Renderer(canvas)
 // Create visualization rows
 ///////////////////////////
 const rowCount = DIMENSIONS + 1
-const rowHeight = 140
-const rowWidth = SIZE.width
 const rows = times(
   rowCount,
   i =>
     new Row({
-      width: rowWidth,
-      height: rowHeight,
-      radius: SIZE.radius,
+      dimensions: i,
+      radius: RADIUS,
       x: 0,
-      y: 80 - i * (3.5 * SIZE.radius),
+      y: 80 - i * (3.5 * RADIUS),
       z: 0,
     }),
 )
@@ -60,9 +56,9 @@ const particleSets = times<Particle[]>(
   rowCount,
   (i, prevParticles) =>
     i === 0
-      ? makeFreshParticles(i, SIZE.radius, PARTICLES)
-      : makeFilledParticles(i, SIZE.radius, prevParticles[i - 1]),
-)
+      ? makeFreshParticles(DIMENSIONS - i, RADIUS, PARTICLES)
+      : makeFilledParticles(DIMENSIONS - i, RADIUS, prevParticles[i - 1]),
+).reverse()
 
 /////////////////////////////////
 // Create simulation web workers
@@ -77,19 +73,8 @@ const workers = times(
         const neighborhood = data.neighborhood
         // Update visualization row with new data
         rows[i].update({ particles, neighborhood })
-        /**
-         * When second column added:
-         * data => {
-         *   const particles = map(data.particles, toParticle3)
-         *   const neighborhood = data.neighborhood
-         *   const data3 = { particles, neighborhood }
-         *   rows[i].update(data3)
-         *   // Downward projection of 4D simulation through second column
-         *   if (i === 4) each(rowsSet[1], row => row.update(data3))
-         * }
-         */
       },
-      { radius: SIZE.radius },
+      { radius: RADIUS },
     ),
 )
 

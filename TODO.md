@@ -2,3 +2,4 @@
 - import more options (bounds, edge-binding)
 - add manual rotation controls
 - tune vector initialization
+- canvas positioning & centering

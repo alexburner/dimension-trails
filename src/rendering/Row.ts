@@ -5,8 +5,7 @@ import { Sitting } from './Sitting'
 import { Spreading } from './Spreading'
 
 export interface SpaceArgs {
-  width: number
-  height: number
+  dimensions: number
   radius: number
   x: number
   y: number
@@ -20,10 +19,9 @@ export class Row {
   private readonly sitting: Sitting
   private readonly spreading: Spreading
 
-  constructor({ width, height, radius, x, y, z }: SpaceArgs) {
+  constructor({ dimensions, radius, x, y, z }: SpaceArgs) {
     this.sitting = new Sitting({
-      width: height,
-      height,
+      dimensions,
       radius,
       x: -100,
       y: 0,
@@ -31,8 +29,7 @@ export class Row {
     })
 
     this.spreading = new Spreading({
-      width: width - height,
-      height,
+      dimensions,
       radius,
       x: -60,
       y: 0,
@@ -51,7 +48,7 @@ export class Row {
   }
 
   public rotate() {
-    // this.group.rotateOnAxis(ROTATE_AXIS, 0.003)
+    this.group.rotateOnAxis(ROTATE_AXIS, 0.003)
   }
 
   public getObject(): THREE.Object3D {
