@@ -2,14 +2,11 @@ import * as THREE from 'three'
 
 import { times } from '../../util'
 
-const material = new THREE.LineDashedMaterial({
+const material = new THREE.LineBasicMaterial({
   blending: THREE.AdditiveBlending,
-  color: 0xffffff,
-  depthTest: false,
   transparent: true,
+  color: 0xffffff,
   opacity: 0.2,
-  dashSize: 0.8,
-  gapSize: 0.8,
 })
 
 export const makeSquarePlane = (radius: number): THREE.Object3D =>
