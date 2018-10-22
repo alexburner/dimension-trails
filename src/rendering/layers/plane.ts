@@ -2,18 +2,18 @@ import * as THREE from 'three'
 
 import { times } from '../../util'
 
-export const makePlane = (radius: number): THREE.Object3D => {
-  const material = new THREE.LineDashedMaterial({
-    blending: THREE.AdditiveBlending,
-    color: 0xffffff,
-    depthTest: false,
-    transparent: true,
-    opacity: 0.2,
-    dashSize: 0.8,
-    gapSize: 0.8,
-  })
+const material = new THREE.LineDashedMaterial({
+  blending: THREE.AdditiveBlending,
+  color: 0xffffff,
+  depthTest: false,
+  transparent: true,
+  opacity: 0.2,
+  dashSize: 0.8,
+  gapSize: 0.8,
+})
 
-  const specs = [
+export const makeSquarePlane = (radius: number): THREE.Object3D =>
+  makePlane([
     // x axis
     [-radius, 0, 0],
     [radius, 0, 0],
@@ -29,8 +29,25 @@ export const makePlane = (radius: number): THREE.Object3D => {
     [radius, -radius, 0],
     [-radius, radius, 0],
     [radius, radius, 0],
-  ]
+  ])
 
+export const makeLongPlane = (radius: number, length: number): THREE.Object3D =>
+  makePlane([
+    // y axis
+    [0, -length, 0],
+    [0, length, 0],
+    // rectangle
+    [radius, -length, 0],
+    [radius, length, 0],
+    [-radius, -length, 0],
+    [-radius, length, 0],
+    [-radius, -length, 0],
+    [radius, -length, 0],
+    // [-radius, length, 0],
+    // [radius, length, 0],
+  ])
+
+const makePlane = (specs: [number, number, number][]): THREE.Object3D => {
   const group = new THREE.Group()
   times(specs.length, i => {
     if (i % 2) return // only do evens, each pair

@@ -9,7 +9,7 @@ const DIMENSIONS = 4
 const PARTICLES = 5
 const SIZE = {
   width: 900,
-  height: 600,
+  height: 700,
   radius: 12,
 }
 
@@ -42,7 +42,7 @@ const rows = times(
       height: rowHeight,
       radius: SIZE.radius,
       x: 0,
-      y: 80 - i * (3 * SIZE.radius),
+      y: 80 - i * (3.5 * SIZE.radius),
       z: 0,
     }),
 )
@@ -56,8 +56,8 @@ const particleSets: any[] = times(
   rowCount,
   (i, prevParticles) =>
     i === 0
-      ? makeFreshParticles(i, PARTICLES)
-      : makeFilledParticles(i, prevParticles[i - 1]),
+      ? makeFreshParticles(i, SIZE.radius, PARTICLES)
+      : makeFilledParticles(i, SIZE.radius, prevParticles[i - 1]),
 )
 
 /////////////////////////////////

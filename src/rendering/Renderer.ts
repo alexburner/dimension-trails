@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 const NEAR = 1
 const FAR = 5000
-const ZOOM = 6
+const ZOOM = 7
 const VIEWANGLE = 45
 
 export class Renderer {

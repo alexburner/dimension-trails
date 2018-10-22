@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
 import { SimulationData3 } from '../simulation/Simulation'
-import { makePlane } from './layers/Plane'
+import { makeLongPlane, makeSquarePlane } from './layers/Plane'
 import { Points } from './layers/Points'
 import { TimeTrails } from './layers/TimeTrails'
 import { SpaceArgs } from './Row'
@@ -12,15 +12,15 @@ export class Spreading {
   private readonly trails: TimeTrails
 
   constructor({ radius, x, y, z }: SpaceArgs) {
-    const plane = makePlane(radius)
-    // plane.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2)
-    const plane2 = makePlane(radius)
-    plane2.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2)
+    const squarePlane = makeSquarePlane(radius + 2)
+    const longPlane = makeLongPlane(radius + 2, 100)
+    longPlane.position.z -= 100
+    longPlane.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2)
     this.points = new Points()
     this.trails = new TimeTrails()
     this.group = new THREE.Group()
-    this.group.add(plane)
-    this.group.add(plane2)
+    this.group.add(squarePlane)
+    this.group.add(longPlane)
     this.group.add(this.points.getObject())
     this.group.add(this.trails.getObject())
     this.group.position.set(x, y, z)

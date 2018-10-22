@@ -7,7 +7,7 @@ import { each, RecentQueue } from '../../util'
 export type ParticleQueue = RecentQueue<Particle3>
 
 const TRAIL_LENGTH = 400
-const MAX_COUNT = TRAIL_LENGTH * 1000
+const MAX_COUNT = TRAIL_LENGTH * 100
 const DOT_SIZE = 1
 
 const texture = ((): THREE.Texture => {
@@ -28,6 +28,7 @@ const texture = ((): THREE.Texture => {
 })()
 
 export class Trails {
+  protected trailLength: number = TRAIL_LENGTH
   protected particleQueues: ParticleQueue[] = []
   private readonly positions: Float32Array
   private readonly posAttr: THREE.BufferAttribute
@@ -57,7 +58,7 @@ export class Trails {
   public update({ particles }: SimulationData3) {
     // (maybe) Grow queue to fit
     while (this.particleQueues.length < particles.length) {
-      this.particleQueues.push(new RecentQueue<Particle3>(TRAIL_LENGTH))
+      this.particleQueues.push(new RecentQueue<Particle3>(this.trailLength))
     }
 
     // (maybe) Shrink queue to fit
