@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
 import { SimulationData3 } from '../simulation/Simulation'
-import { makeLongPlane, makeSquarePlane } from './layers/Plane'
+import { makeLongPlane, makeSquarePlane } from './layers/plane'
 import { Points } from './layers/Points'
 import { TimeTrails } from './layers/TimeTrails'
 import { SpaceArgs } from './Row'

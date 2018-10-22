@@ -8,13 +8,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf docs && parcel build --out-dir docs ./src/index.html",
-    "dev": "rm -rf dev && parcel --out-dir dev ./src/index.html",
+    "build": "rm -rf ./docs && parcel build --out-dir ./docs ./src/index.html",
+    "dev": "rm -rf ./dev && parcel --out-dir dev ./src/index.html",
     "tsc": "tsc --watch --noEmit",
     "prettier": "prettier --write './src/**/*.+(json|md|scss|ts|tsx)'",
     "tslint": "tslint --fix -p ./tsconfig.json './src/**/*.+(ts|tsx)'",
     "format": "npm run prettier && npm run tslint",
-    "clean": "rm -rf .cache && rm -rf dev"
+    "clean": "rm -rf .cache && rm -rf ./dev"
   },
   "repository": {
     "type": "git",
