@@ -1,4 +1,8 @@
-import { makeFilledParticles, makeFreshParticles } from './particle/particle'
+import {
+  makeFilledParticles,
+  makeFreshParticles,
+  Particle,
+} from './particle/particle'
 import { toParticle3 } from './particle/particle-3'
 import { Renderer } from './rendering/Renderer'
 import { Row } from './rendering/Row'
@@ -52,7 +56,7 @@ each(rows, row => renderer.addObject(row.getObject()))
 ///////////////////////////////////
 // Create initial particle spreads
 /////////////////////////////////
-const particleSets: any[] = times(
+const particleSets = times<Particle[]>(
   rowCount,
   (i, prevParticles) =>
     i === 0
