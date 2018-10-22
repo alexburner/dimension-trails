@@ -23,7 +23,7 @@ export class Row {
     this.sitting = new Sitting({
       dimensions,
       radius,
-      x: -100,
+      x: -110,
       y: 0,
       z: 0,
     })
@@ -31,7 +31,7 @@ export class Row {
     this.spreading = new Spreading({
       dimensions,
       radius,
-      x: -60,
+      x: -70,
       y: 0,
       z: 0,
     })
@@ -48,7 +48,7 @@ export class Row {
   }
 
   public rotate() {
-    this.group.rotateOnAxis(ROTATE_AXIS, 0.003)
+    this.group.rotateOnAxis(ROTATE_AXIS, 0.005)
   }
 
   public getObject(): THREE.Object3D {

@@ -12,7 +12,7 @@ import { each, map, times } from './util'
 const DIMENSIONS = 4
 const PARTICLES = 9
 
-const WIDTH = 900
+const WIDTH = 850
 const HEIGHT = 700
 const RADIUS = 12
 
