@@ -32,12 +32,6 @@ export class Renderer {
       FAR,
     )
     this.camera.position.z = 40 * ZOOM
-
-    // Let there be light
-    const light = new THREE.PointLight(0xffffff, 0.7, 1000, 2)
-    light.position.set(0, 0, 50)
-    this.scene.add(light)
-    this.scene.add(new THREE.AmbientLight(0xffffff, 0.1))
   }
 
   public addObject(object: THREE.Object3D) {
