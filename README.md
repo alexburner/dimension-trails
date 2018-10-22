@@ -1,4 +1,4 @@
-# dimension spread
+# dimension trails
 
 Spreading orbital motion through 01234D & time
 

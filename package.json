@@ -1,5 +1,5 @@
 {
-  "name": "dimension-spread",
+  "name": "dimension-trails",
   "version": "0.0.1",
   "description": "Spreading orbital motion through 01234D & time",
   "engines": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexburner/dimension-spread.git"
+    "url": "git+https://github.com/alexburner/dimension-trails.git"
   },
   "keywords": [
     "multidimensional",
@@ -38,9 +38,9 @@
   "author": "aburner",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexburner/dimension-spread/issues"
+    "url": "https://github.com/alexburner/dimension-trails/issues"
   },
-  "homepage": "https://github.com/alexburner/dimension-spread#readme",
+  "homepage": "https://github.com/alexburner/dimension-trails#readme",
   "devDependencies": {
     "@types/three": "0.93.4",
     "parcel-bundler": "1.10.3",
