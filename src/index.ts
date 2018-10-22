@@ -10,7 +10,7 @@ import { SimulationWorker } from './simulation/SimulationWorker'
 import { each, map, times } from './util'
 
 const DIMENSIONS = 4
-const PARTICLES = 5
+const PARTICLES = 9
 
 const WIDTH = 900
 const HEIGHT = 700
@@ -56,9 +56,9 @@ const particleSets = times<Particle[]>(
   rowCount,
   (i, prevParticles) =>
     i === 0
-      ? makeFreshParticles(DIMENSIONS - i, RADIUS, PARTICLES)
-      : makeFilledParticles(DIMENSIONS - i, RADIUS, prevParticles[i - 1]),
-).reverse()
+      ? makeFreshParticles(i, RADIUS, PARTICLES)
+      : makeFilledParticles(i, RADIUS, prevParticles[i - 1]),
+)
 
 /////////////////////////////////
 // Create simulation web workers
