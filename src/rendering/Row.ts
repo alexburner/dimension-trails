@@ -48,7 +48,7 @@ export class Row {
   }
 
   public rotate() {
-    this.group.rotateOnAxis(ROTATE_AXIS, 0.005)
+    this.group.rotateOnAxis(ROTATE_AXIS, -0.005)
   }
 
   public getObject(): THREE.Object3D {
