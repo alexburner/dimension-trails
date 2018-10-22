@@ -10,7 +10,7 @@ const PARTICLES = 5
 const SIZE = {
   width: 900,
   height: 600,
-  radius: 80,
+  radius: 12,
 }
 
 //////////////////////////
@@ -42,7 +42,7 @@ const rows = times(
       height: rowHeight,
       radius: SIZE.radius,
       x: 0,
-      y: 80 + i * -30,
+      y: 80 - i * (3 * SIZE.radius),
       z: 0,
     }),
 )
@@ -66,23 +66,27 @@ const particleSets: any[] = times(
 const workers = times(
   particleSets.length,
   i =>
-    new SimulationWorker(particleSets[i], data => {
-      const particles = map(data.particles, toParticle3)
-      const neighborhood = data.neighborhood
-      // Update visualization row with new data
-      rows[i].update({ particles, neighborhood })
-      /**
-       * When second column added:
-       * data => {
-       *   const particles = map(data.particles, toParticle3)
-       *   const neighborhood = data.neighborhood
-       *   const data3 = { particles, neighborhood }
-       *   rows[i].update(data3)
-       *   // Downward projection of 4D simulation through second column
-       *   if (i === 4) each(rowsSet[1], row => row.update(data3))
-       * }
-       */
-    }),
+    new SimulationWorker(
+      particleSets[i],
+      data => {
+        const particles = map(data.particles, toParticle3)
+        const neighborhood = data.neighborhood
+        // Update visualization row with new data
+        rows[i].update({ particles, neighborhood })
+        /**
+         * When second column added:
+         * data => {
+         *   const particles = map(data.particles, toParticle3)
+         *   const neighborhood = data.neighborhood
+         *   const data3 = { particles, neighborhood }
+         *   rows[i].update(data3)
+         *   // Downward projection of 4D simulation through second column
+         *   if (i === 4) each(rowsSet[1], row => row.update(data3))
+         * }
+         */
+      },
+      { radius: SIZE.radius },
+    ),
 )
 
 /////////////////////////

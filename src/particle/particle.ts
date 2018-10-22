@@ -20,9 +20,9 @@ export const makeFilledParticles = (
 
 const makeFreshParticle = (dimensions: number): Particle => ({
   dimensions,
-  position: radialRandomVector(dimensions),
-  velocity: radialRandomVector(dimensions),
-  acceleration: radialRandomVector(dimensions),
+  position: radialRandomVector(dimensions, 0.5),
+  velocity: radialRandomVector(dimensions, 0.5),
+  acceleration: radialRandomVector(dimensions, 0.5),
 })
 
 const makeFilledParticle = (dimensions: number, oldP: Particle): Particle => {

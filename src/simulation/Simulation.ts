@@ -9,11 +9,9 @@ import { bounding, BoundingNames } from './bounding/bounding'
 export interface SimulationConfig {
   behaviorSpec: BehaviorSpecs
   boundingName: BoundingNames
-  max: {
-    force: number
-    speed: number
-    radius: number
-  }
+  maxForce: number
+  maxSpeed: number
+  radius: number
 }
 
 export interface SimulationData {
@@ -42,11 +40,9 @@ const DEFAULT_CONFIG: SimulationConfig = {
     },
   },
   boundingName: BoundingNames.CenterScaling,
-  max: {
-    force: 1,
-    speed: 1,
-    radius: 12,
-  },
+  maxForce: 1,
+  maxSpeed: 1,
+  radius: 1,
 }
 
 export class Simulation {
@@ -76,12 +72,12 @@ export class Simulation {
     // Update positions
     each(particles, p => {
       p.velocity = add(p.velocity, p.acceleration)
-      p.velocity = limitMagnitude(p.velocity, config.max.speed)
+      p.velocity = limitMagnitude(p.velocity, config.maxSpeed)
       p.position = add(p.position, p.velocity)
     })
 
     // Apply particle bounding
-    bounding(particles, config.max.radius, config.boundingName)
+    bounding(particles, config.radius, config.boundingName)
 
     // Re-calculate Particle relations
     this.neighborhood = getNeighborhood(particles)

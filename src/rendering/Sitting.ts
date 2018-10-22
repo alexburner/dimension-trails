@@ -11,8 +11,8 @@ export class Sitting {
   private readonly points: Points
   private readonly trails: Trails
 
-  constructor({ width, height, radius, x, y, z }: SpaceArgs) {
-    const plane = makePlane(width, height, radius)
+  constructor({ radius, x, y, z }: SpaceArgs) {
+    const plane = makePlane(radius)
     this.points = new Points()
     this.trails = new Trails()
     this.group = new THREE.Group()

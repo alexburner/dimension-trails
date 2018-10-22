@@ -11,12 +11,16 @@ export class Spreading {
   private readonly points: Points
   private readonly trails: TimeTrails
 
-  constructor({ width, height, radius, x, y, z }: SpaceArgs) {
-    const plane = makePlane(width, height, radius)
+  constructor({ radius, x, y, z }: SpaceArgs) {
+    const plane = makePlane(radius)
+    // plane.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2)
+    const plane2 = makePlane(radius)
+    plane2.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2)
     this.points = new Points()
     this.trails = new TimeTrails()
     this.group = new THREE.Group()
     this.group.add(plane)
+    this.group.add(plane2)
     this.group.add(this.points.getObject())
     this.group.add(this.trails.getObject())
     this.group.position.set(x, y, z)
