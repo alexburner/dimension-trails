@@ -4,8 +4,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strict": true,
+    "target": "ES5"
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
