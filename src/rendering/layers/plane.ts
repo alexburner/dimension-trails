@@ -5,8 +5,8 @@ import { times } from '../../util'
 const material = new THREE.LineBasicMaterial({
   blending: THREE.AdditiveBlending,
   transparent: true,
-  color: 0xffffff,
-  opacity: 0.2,
+  color: 0x309bff,
+  opacity: 0.4,
 })
 
 export const makeSquarePlane = (radius: number): THREE.Object3D =>
