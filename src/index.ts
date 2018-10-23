@@ -15,7 +15,7 @@ const RADIUS = 12
 // Extract hash query params
 const params = getHashParams()
 const spin = typeof params.spin === 'number' ? params.spin : -0.005
-const count = typeof params.count === 'number' ? params.count : 5
+const count = typeof params.count === 'number' ? params.count : 9
 
 ///////////////////////////
 // Create threejs renderer
