@@ -115,7 +115,7 @@ interface Params {
 export const getHashParams = (): Params => {
   const hash = window.location.hash || ''
   if (!hash.startsWith('#')) return {}
-  const parts = hash.split('#')[1].split('?')
+  const parts = hash.split('#')[1].split('&')
   return reduce<string, Params>(
     parts,
     (memo, part) => {

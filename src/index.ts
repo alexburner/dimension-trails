@@ -10,13 +10,12 @@ import { SimulationWorker } from './simulation/SimulationWorker'
 import { each, getHashParams, map, times } from './util'
 
 const DIMENSIONS = 4
-const PARTICLES = 9
-
 const RADIUS = 12
 
 // Extract hash query params
 const params = getHashParams()
 const spin = typeof params.spin === 'number' ? params.spin : -0.005
+const count = typeof params.count === 'number' ? params.count : 5
 
 ///////////////////////////
 // Create threejs renderer
@@ -53,7 +52,7 @@ const particleSets = times<Particle[]>(
   rowCount,
   (i, prevParticles) =>
     i === 0
-      ? makeFreshParticles(i, RADIUS, PARTICLES)
+      ? makeFreshParticles(i, RADIUS, count)
       : makeFilledParticles(i, RADIUS, prevParticles[i - 1]),
 )
 
