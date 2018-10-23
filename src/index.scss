@@ -1,9 +1,85 @@
+/**
+ * Typography via Medium
+ */
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga' on;
+  -moz-font-feature-settings: 'liga' on;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #151c31;
   color: #fff;
+  padding-bottom: 40px;
 }
 
 canvas {
   display: block;
+}
+
+$canvas-width: 900px;
+$canvas-height: 720px;
+$left-width: 60px;
+$right-width: 300px;
+$total-width: $canvas-width + $left-width + $right-width;
+
+#container {
+  position: relative;
   margin: auto;
+  width: $total-width;
+  height: $canvas-height;
+
+  & > * {
+    float: left;
+  }
+}
+
+dl,
+dd,
+dt {
+  margin: 0;
+  padding: 0;
+}
+
+dl {
+  &.left {
+    width: $left-width;
+    text-align: right;
+
+    // hacks
+    position: relative;
+    right: -20px;
+
+    dd {
+      margin-right: 3px;
+    }
+  }
+
+  &.right {
+    width: $right-width;
+  }
+
+  dt {
+    font-family: Times, serif;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 85px;
+  }
+
+  dd {
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+  }
 }

@@ -12,28 +12,18 @@ import { each, getHashParams, map, times } from './util'
 const DIMENSIONS = 4
 const PARTICLES = 9
 
-const WIDTH = 920
-const HEIGHT = 700
 const RADIUS = 12
 
 // Extract hash query params
 const params = getHashParams()
 const spin = typeof params.spin === 'number' ? params.spin : -0.005
 
-//////////////////////////
-// Create & insert canvas
-////////////////////////
-const target = document.getElementById('target')
-if (!target) throw new Error('Failed to find #target')
-const canvas = document.createElement('canvas')
-canvas.width = WIDTH
-canvas.height = HEIGHT
-target.appendChild(canvas)
-
 ///////////////////////////
 // Create threejs renderer
 /////////////////////////
-const renderer = new Renderer(canvas)
+const canvas = document.getElementById('canvas')
+if (!canvas) throw new Error('Failed to find canvas')
+const renderer = new Renderer(canvas as HTMLCanvasElement)
 
 /////////////////////////////
 // Create visualization rows
