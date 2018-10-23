@@ -2,7 +2,7 @@
 
 Spreading orbital motion through 01234D & time
 
-[![](https://i.imgur.com/hk5H6sWl.png)](https://alexburner.github.io/dimension-trails)
+[![](https://i.imgur.com/7DdSXaNl.png)](https://alexburner.github.io/dimension-trails)
 
 ### Design draft
 
