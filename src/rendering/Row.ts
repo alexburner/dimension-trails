@@ -18,8 +18,11 @@ export class Row {
   private readonly group: THREE.Group
   private readonly sitting: Sitting
   private readonly spreading: Spreading
+  private readonly spin: number
 
-  constructor({ dimensions, radius, x, y, z }: SpaceArgs) {
+  constructor({ dimensions, radius, x, y, z }: SpaceArgs, spin: number) {
+    this.spin = spin
+
     this.sitting = new Sitting({
       dimensions,
       radius,
@@ -48,7 +51,7 @@ export class Row {
   }
 
   public rotate() {
-    this.group.rotateOnAxis(ROTATE_AXIS, -0.005)
+    this.group.rotateOnAxis(ROTATE_AXIS, this.spin)
   }
 
   public getObject(): THREE.Object3D {

@@ -7,7 +7,7 @@ import { toParticle3 } from './particle/particle-3'
 import { Renderer } from './rendering/Renderer'
 import { Row } from './rendering/Row'
 import { SimulationWorker } from './simulation/SimulationWorker'
-import { each, map, times } from './util'
+import { each, getHashParams, map, times } from './util'
 
 const DIMENSIONS = 4
 const PARTICLES = 9
@@ -15,6 +15,10 @@ const PARTICLES = 9
 const WIDTH = 920
 const HEIGHT = 700
 const RADIUS = 12
+
+// Extract hash query params
+const params = getHashParams()
+const spin = typeof params.spin === 'number' ? params.spin : -0.005
 
 //////////////////////////
 // Create & insert canvas
@@ -38,13 +42,16 @@ const rowCount = DIMENSIONS + 1
 const rows = times(
   rowCount,
   i =>
-    new Row({
-      dimensions: i,
-      radius: RADIUS,
-      x: 0,
-      y: 80 - i * (3.5 * RADIUS),
-      z: 0,
-    }),
+    new Row(
+      {
+        dimensions: i,
+        radius: RADIUS,
+        x: 0,
+        y: 80 - i * (3.5 * RADIUS),
+        z: 0,
+      },
+      spin,
+    ),
 )
 // Add row THREE.Objects to renderer Scene
 each(rows, row => renderer.addObject(row.getObject()))

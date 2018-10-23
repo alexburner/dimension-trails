@@ -99,6 +99,35 @@ export const assertNever = (value: never): never => {
 }
 
 /**
+ * Check if a value can be cast to a Number
+ */
+export const isNumeric = (value: any): boolean => {
+  const num = Number(value)
+  return !Number.isNaN(num)
+}
+
+/**
+ * Extract hash query params from URL
+ */
+interface Params {
+  [key: string]: string | number | undefined
+}
+export const getHashParams = (): Params => {
+  const hash = window.location.hash || ''
+  if (!hash.startsWith('#')) return {}
+  const parts = hash.split('#')[1].split('?')
+  return reduce<string, Params>(
+    parts,
+    (memo, part) => {
+      const [key, val] = part.split('=')
+      memo[key] = isNumeric(val) ? Number(val) : val
+      return memo
+    },
+    {},
+  )
+}
+
+/**
  * Limit a list to a size, FIFO
  */
 export class RecentQueue<T> {
