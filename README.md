@@ -10,8 +10,9 @@ Source simulations - [https://alexburner.github.io/dimensions](https://alexburne
 
 [![](https://i.imgur.com/vMd7suLl.png)](https://i.imgur.com/vMd7suL.png)
 
-### Related links
+### Concept links
 
+> - [Life is a Braid in Spacetime](http://nautil.us/issue/9/time/life-is-a-braid-in-spacetime) | Max Tegmark
 > - [Molecular Machinery of Life](http://doorofperception.com/2015/12/david-s-goodsell-the-machinery-of-life/) | David S. Goodsell
 > - [Consciousness, Creativity, and the Brain](https://www.youtube.com/watch?v=z2UHLMVr4vg&feature=youtu.be&t=41) | David Lynch
 > - [Consciousness - Awareness as Attention](https://aeon.co/essays/how-consciousness-works-and-why-we-believe-in-ghosts) | Michael Graziano
@@ -19,6 +20,10 @@ Source simulations - [https://alexburner.github.io/dimensions](https://alexburne
 > - [Quantum Graphity](http://nautil.us/issue/32/space/lets-rethink-space) | Fotini Markopoulou
 > - [Spacetime - Emergence from 4D Networks](http://blog.stephenwolfram.com/2015/12/what-is-spacetime-really/) | Stephen Wolfram
 > - [Spacetime & Causality - 4D Non-Euclidean Mathematical Space](https://www.youtube.com/watch?v=YycAzdtUIko) | PBS Digital Studios
+
+### Code links
+
+> - [Gravitational Attraction - Nature of Code](https://natureofcode.com/book/chapter-2-forces/#29-gravitational-attraction) | Daniel Shiffman
 
 # development
 
