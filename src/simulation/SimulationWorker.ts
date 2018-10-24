@@ -5,12 +5,11 @@ import { SimulationConfig } from './Simulation'
 export class SimulationWorker {
   private readonly worker: Worker = new Worker('./worker.ts')
 
-  constructor(
-    particles: Particle[],
-    listener: (data: MsgToMain) => void,
-    config?: Partial<SimulationConfig>,
-  ) {
+  constructor(listener: (data: MsgToMain) => void) {
     this.worker.addEventListener('message', e => listener(JSON.parse(e.data)))
+  }
+
+  public init(particles: Particle[], config?: Partial<SimulationConfig>) {
     this.send({ type: 'init', particles, config })
   }
 
