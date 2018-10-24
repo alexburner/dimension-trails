@@ -41,10 +41,6 @@ body {
   }
 }
 
-canvas {
-  display: block;
-}
-
 $canvas-width: 900px;
 $canvas-height: 720px;
 $left-width: 60px;
@@ -52,21 +48,14 @@ $right-width: 270px;
 $total-width: $canvas-width + $left-width + $right-width;
 
 #container {
-  position: relative;
-  margin: auto;
+  display: flex;
   width: $total-width;
   height: $canvas-height;
-
-  & > * {
-    float: left;
-  }
+  margin: auto;
 }
 
-dl,
-dd,
-dt {
-  margin: 0;
-  padding: 0;
+canvas {
+  display: block;
 }
 
 dl {
@@ -74,7 +63,7 @@ dl {
     width: $left-width;
     text-align: right;
 
-    // hacks
+    // hack it up
     position: relative;
     right: -20px;
 
