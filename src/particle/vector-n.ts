@@ -2,7 +2,7 @@ import { coinFlip, shuffle } from '../util'
 
 export type Vector = Float32Array
 type VectorMath = (a: Vector, b: Vector | number) => Vector
-type NumberMath = (an: number, bn: number) => number
+type NumberMath = (a: number, b: number) => number
 
 const curryMath = (math: NumberMath): VectorMath => (a, b) => {
   const c: Vector = new Float32Array(a.length)
@@ -15,10 +15,10 @@ const curryMath = (math: NumberMath): VectorMath => (a, b) => {
   return c
 }
 
-export const add: VectorMath = curryMath((an, bn) => an + bn)
-export const subtract: VectorMath = curryMath((an, bn) => an - bn)
-export const multiply: VectorMath = curryMath((an, bn) => an * bn)
-export const divide: VectorMath = curryMath((an, bn) => an / bn)
+export const add: VectorMath = curryMath((a, b) => a + b)
+export const subtract: VectorMath = curryMath((a, b) => a - b)
+export const multiply: VectorMath = curryMath((a, b) => a * b)
+export const divide: VectorMath = curryMath((a, b) => a / b)
 
 export const getDistanceSq = (a: Vector, b: Vector): number => {
   const delta = subtract(a, b)
@@ -81,10 +81,10 @@ export const radialRandomVector = (
   return result
 }
 
-export const fill = (newV: Vector, oldV: Vector): Vector => {
-  const filled: Vector = new Float32Array(newV.length)
-  for (let i = 0, l = newV.length; i < l; i++) {
-    filled[i] = i < oldV.length ? oldV[i] : newV[i]
+export const assign = (dst: Vector, src: Vector): Vector => {
+  const v: Vector = new Float32Array(dst.length)
+  for (let i = 0, l = dst.length; i < l; i++) {
+    v[i] = i < src.length ? src[i] : dst[i]
   }
-  return filled
+  return v
 }

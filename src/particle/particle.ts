@@ -1,5 +1,5 @@
 import { map, times } from '../util'
-import { fill, radialRandomVector, Vector } from './vector-n'
+import { assign, radialRandomVector, Vector } from './vector-n'
 
 export interface Particle {
   dimensions: number
@@ -34,8 +34,8 @@ const makeFilledParticle = (
   oldP: Particle,
 ): Particle => {
   const newP = makeFreshParticle(dimensions, radius)
-  newP.position = fill(newP.position, oldP.position)
-  newP.velocity = fill(newP.velocity, oldP.velocity)
-  newP.acceleration = fill(newP.acceleration, oldP.acceleration)
+  newP.position = assign(newP.position, oldP.position)
+  newP.velocity = assign(newP.velocity, oldP.velocity)
+  newP.acceleration = assign(newP.acceleration, oldP.acceleration)
   return newP
 }
