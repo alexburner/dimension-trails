@@ -112,7 +112,7 @@ export const isNumeric = (value: any): boolean => {
 interface Params {
   [key: string]: string | number | undefined
 }
-export const getHashParams = (): Params => {
+export const getUrlHashParams = (): Params => {
   const hash = window.location.hash || ''
   if (!hash.startsWith('#')) return {}
   const parts = hash.split('#')[1].split('&')

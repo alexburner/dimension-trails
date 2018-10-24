@@ -7,13 +7,13 @@ import { toParticle3 } from './particle/particle-3'
 import { Renderer } from './rendering/Renderer'
 import { Row } from './rendering/Row'
 import { SimulationWorker } from './simulation/SimulationWorker'
-import { each, getHashParams, map, times } from './util'
+import { each, getUrlHashParams, map, times } from './util'
 
 const DIMENSIONS = 4
 const RADIUS = 12
 
-// Extract hash query params
-const params = getHashParams()
+// Extract URL hash query params
+const params = getUrlHashParams()
 const spin = typeof params.spin === 'number' ? params.spin : -0.005
 const count = typeof params.count === 'number' ? params.count : 9
 
@@ -21,8 +21,9 @@ const count = typeof params.count === 'number' ? params.count : 9
 // Create threejs renderer
 /////////////////////////
 const canvas = document.getElementById('canvas')
-if (!canvas) throw new Error('Failed to find canvas')
-const renderer = new Renderer(canvas as HTMLCanvasElement)
+if (!canvas) throw new Error('Failed to find #canvas element')
+if (!(canvas instanceof HTMLCanvasElement)) throw new Error('Bad <canvas>')
+const renderer = new Renderer(canvas)
 
 /////////////////////////////
 // Create visualization rows
@@ -45,15 +46,15 @@ const rows = times(
 // Add row THREE.Objects to renderer Scene
 each(rows, row => renderer.addObject(row.getObject()))
 
-///////////////////////////////////
-// Create initial particle spreads
-/////////////////////////////////
+////////////////////////////
+// Create initial particles
+//////////////////////////
 const particleSets = times<Particle[]>(
   rowCount,
-  (i, prevParticles) =>
+  (i, prevSets) =>
     i === 0
       ? makeFreshParticles(i, RADIUS, count)
-      : makeFilledParticles(i, RADIUS, prevParticles[i - 1]),
+      : makeFilledParticles(i, RADIUS, prevSets[i - 1]),
 )
 
 /////////////////////////////////
@@ -65,9 +66,9 @@ const workers = times(
     new SimulationWorker(
       particleSets[i],
       data => {
+        // Update visualization row with new data
         const particles = map(data.particles, toParticle3)
         const neighborhood = data.neighborhood
-        // Update visualization row with new data
         rows[i].update({ particles, neighborhood })
       },
       { radius: RADIUS },
