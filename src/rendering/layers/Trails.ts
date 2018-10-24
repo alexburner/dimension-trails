@@ -56,17 +56,17 @@ export class Trails {
   }
 
   public update({ particles }: SimulationData3) {
-    // (maybe) Grow queue to fit
+    // (maybe) Add queues to fit
     while (this.particleQueues.length < particles.length) {
       this.particleQueues.push(new RecentQueue<Particle3>(this.trailLength))
     }
 
-    // (maybe) Shrink queue to fit
+    // (maybe) Remove queues to fit
     while (this.particleQueues.length > particles.length) {
       this.particleQueues.pop()
     }
 
-    // Add new particles to queue
+    // Add new particles to queues
     each(this.particleQueues, (particleQueue, i) => {
       particleQueue.add(cloneParticle3(particles[i]))
     })
