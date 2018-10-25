@@ -66,7 +66,7 @@ const workers = times(
   particleSets.length,
   i =>
     new SimulationWorker(data => {
-      // Update visualization row with new data
+      // Update corresponding row with new data
       const particles = map(data.particles, toParticle3)
       const neighborhood = data.neighborhood
       rows[i].update({ particles, neighborhood })
