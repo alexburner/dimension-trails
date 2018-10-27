@@ -16,7 +16,7 @@ const RADIUS = 12
 // Extract URL hash query params
 ///////////////////////////////
 const params = getUrlHashParams()
-const spin = typeof params.spin === 'number' ? params.spin : -0.005
+const spin = typeof params.spin === 'number' ? params.spin : -0.004
 const count = typeof params.count === 'number' ? params.count : 6
 
 ///////////////////////////
