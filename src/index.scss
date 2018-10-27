@@ -74,6 +74,10 @@ dl {
 
   &.right {
     width: $right-width;
+
+    dd {
+      margin-left: 2px;
+    }
   }
 
   dt {
@@ -82,9 +86,23 @@ dl {
     font-style: italic;
     font-weight: bold;
     margin-top: 85px;
+
+    small {
+      font-family: Helvetica, sans-serif;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: normal;
+      text-transform: uppercase;
+
+      // hack it up
+      margin-left: 4px;
+      position: relative;
+      top: -2px;
+    }
   }
 
   dd {
+    margin-top: 1px;
     font-family: Helvetica, sans-serif;
     font-size: 12px;
   }
