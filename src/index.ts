@@ -17,7 +17,7 @@ const RADIUS = 12
 ///////////////////////////////
 const params = getUrlHashParams()
 const spin = typeof params.spin === 'number' ? params.spin : -0.005
-const count = typeof params.count === 'number' ? params.count : 9
+const count = typeof params.count === 'number' ? params.count : 6
 
 ///////////////////////////
 // Create threejs renderer
