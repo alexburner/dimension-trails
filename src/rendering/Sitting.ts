@@ -6,6 +6,8 @@ import { Points } from './layers/Points'
 import { Trails } from './layers/Trails'
 import { SpaceArgs } from './Row'
 
+const ROTATE_AXIS = new THREE.Vector3(0, 1, 0)
+
 export class Sitting {
   private readonly group: THREE.Group
   private readonly points: Points
@@ -30,5 +32,9 @@ export class Sitting {
 
   public getObject(): THREE.Object3D {
     return this.group
+  }
+
+  public rotate(spin: number) {
+    this.group.rotateOnAxis(ROTATE_AXIS, spin)
   }
 }

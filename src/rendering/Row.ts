@@ -12,17 +12,12 @@ export interface SpaceArgs {
   z: number
 }
 
-const ROTATE_AXIS = new THREE.Vector3(1, 0, 0)
-
 export class Row {
   private readonly group: THREE.Group
   private readonly sitting: Sitting
   private readonly spreading: Spreading
-  private readonly spin: number
 
-  constructor({ dimensions, radius, x, y, z }: SpaceArgs, spin: number) {
-    this.spin = spin
-
+  constructor({ dimensions, radius, x, y, z }: SpaceArgs) {
     this.sitting = new Sitting({
       dimensions,
       radius,
@@ -50,8 +45,9 @@ export class Row {
     this.spreading.update(data)
   }
 
-  public rotate() {
-    this.group.rotateOnAxis(ROTATE_AXIS, this.spin)
+  public rotate(spin: number) {
+    this.sitting.rotate(spin)
+    this.spreading.rotate(spin)
   }
 
   public getObject(): THREE.Object3D {

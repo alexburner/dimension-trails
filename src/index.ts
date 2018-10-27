@@ -34,16 +34,13 @@ const rowCount = DIMENSIONS + 1
 const rows = times(
   rowCount,
   i =>
-    new Row(
-      {
-        dimensions: i,
-        radius: RADIUS,
-        x: 0,
-        y: 80 - i * (3.5 * RADIUS),
-        z: 0,
-      },
-      spin,
-    ),
+    new Row({
+      dimensions: i,
+      radius: RADIUS,
+      x: 0,
+      y: 80 - i * (3.5 * RADIUS),
+      z: 0,
+    }),
 )
 // Add row THREE.Objects to renderer Scene
 each(rows, row => renderer.addObject(row.getObject()))
@@ -81,7 +78,7 @@ each(workers, (worker, i) => worker.init(particleSets[i], { radius: RADIUS }))
 const animationLoop = () => {
   window.requestAnimationFrame(animationLoop)
   each(workers, worker => worker.tick())
-  each(rows, row => row.rotate())
+  each(rows, row => row.rotate(spin))
   renderer.render()
 }
 
