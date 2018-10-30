@@ -4,11 +4,7 @@ Spreading orbital motion through 01234D & time
 
 [![](https://i.imgur.com/vwZKzjTl.png)](https://alexburner.github.io/dimension-trails)
 
-### Simulation playground
-
-> - [https://alexburner.github.io/dimensions](https://alexburner.github.io/dimensions)
-
-### Concept links
+### Concepts
 
 > - [Life is a Braid in Spacetime](http://nautil.us/issue/9/time/life-is-a-braid-in-spacetime) | Max Tegmark
 > - [Molecular Machinery of Life](http://doorofperception.com/2015/12/david-s-goodsell-the-machinery-of-life/) | David S. Goodsell
@@ -19,9 +15,13 @@ Spreading orbital motion through 01234D & time
 > - [Spacetime - Emergence from 4D Networks](http://blog.stephenwolfram.com/2015/12/what-is-spacetime-really/) | Stephen Wolfram
 > - [Spacetime & Causality - 4D Non-Euclidean Mathematical Space](https://www.youtube.com/watch?v=YycAzdtUIko) | PBS Digital Studios
 
-### Code links
+### Codes
 
 > - [Gravitational Attraction - Nature of Code](https://natureofcode.com/book/chapter-2-forces/#29-gravitational-attraction) | Daniel Shiffman
+
+### Playground
+
+> - [https://alexburner.github.io/dimensions](https://alexburner.github.io/dimensions)
 
 # development
 
