@@ -4,6 +4,8 @@ Spreading orbital motion through 01234D & time
 
 [![](https://i.imgur.com/vwZKzjTl.png)](https://alexburner.github.io/dimension-trails)
 
+Playground - [https://alexburner.github.io/dimensions](https://alexburner.github.io/dimensions)
+
 ### Concepts
 
 > - [Life is a Braid in Spacetime](http://nautil.us/issue/9/time/life-is-a-braid-in-spacetime) | Max Tegmark
@@ -18,10 +20,6 @@ Spreading orbital motion through 01234D & time
 ### Codes
 
 > - [Gravitational Attraction - Nature of Code](https://natureofcode.com/book/chapter-2-forces/#29-gravitational-attraction) | Daniel Shiffman
-
-### Playground
-
-> - [https://alexburner.github.io/dimensions](https://alexburner.github.io/dimensions)
 
 # development
 
