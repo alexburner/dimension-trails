@@ -33,11 +33,11 @@ npm install
 
 ## dev
 
-Run dev server + watch (outputs to `dev/`)
+Run dev server + watch (outputs to `dev`)
 
 ```sh
 npm run dev
-npm run clean # busts .cache/ dev/
+npm run clean # remove .cache/ dev/
 ```
 
 ## tsc
@@ -60,7 +60,7 @@ npm run tslint
 
 ## build
 
-Run production build (outputs to `docs/`)
+Run production build (outputs to `docs`)
 
 ```sh
 npm run build
