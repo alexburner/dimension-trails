@@ -1,7 +1,7 @@
 {
   "name": "dimension-trails",
   "version": "0.0.1",
-  "description": "Spreading orbital motion through 01234D & time",
+  "description": "Orbital motion through 01234D & time + Hypothetical stages of emergence",
   "engines": {
     "node": "11.0.0",
     "npm": "6.4.2"
@@ -33,7 +33,9 @@
     "orbits",
     "motion",
     "spread",
-    "trails"
+    "trails",
+    "emergence",
+    "complexity"
   ],
   "author": "aburner",
   "license": "ISC",
