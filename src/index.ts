@@ -10,14 +10,16 @@ import { SimulationWorker } from './simulation/SimulationWorker'
 import { each, getUrlHashParams, map, times } from './util'
 
 const DIMENSIONS = 4
-const RADIUS = 12
+const RADIUS = 14
+const COUNT = 4
+const SPIN = -0.004
 
 /////////////////////////////////
 // Extract URL hash query params
 ///////////////////////////////
 const params = getUrlHashParams()
-const spin = typeof params.spin === 'number' ? params.spin : -0.004
-const count = typeof params.count === 'number' ? params.count : 6
+const spin = typeof params.spin === 'number' ? params.spin : SPIN
+const count = typeof params.count === 'number' ? params.count : COUNT
 
 ///////////////////////////
 // Create threejs renderer
@@ -38,7 +40,7 @@ const rows = times(
       dimensions: i,
       radius: RADIUS,
       x: 0,
-      y: 80 - i * (3.5 * RADIUS),
+      y: 80 - i * (3.5 * 12),
       z: 0,
     }),
 )
