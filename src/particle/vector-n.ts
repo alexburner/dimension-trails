@@ -1,9 +1,9 @@
 import { coinFlip, shuffle } from '../util'
 
 export type Vector = Float32Array
+
 type VectorMath = (a: Vector, b: Vector | number) => Vector
 type NumberMath = (a: number, b: number) => number
-
 const curryMath = (math: NumberMath): VectorMath => (a, b) => {
   const c: Vector = new Float32Array(a.length)
   const isNumB = typeof b === 'number'
