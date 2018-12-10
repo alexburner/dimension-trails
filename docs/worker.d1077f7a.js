@@ -19,4 +19,4 @@ parcelRequire=function(e,r,n,t){var i="function"==typeof parcelRequire&&parcelRe
 },{"../particle/neighbors":"j1Bg","../particle/vector-n":"uubC","../util":"BHXf","./behavior/behavior":"YwtD","./bounding/bounding":"NuHD"}],"0INl":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0});var e=require("../particle/neighbors"),t=require("../particle/particle-msg"),r=require("../util"),i=require("./Simulation"),a=self,s=new i.Simulation,c=function(e){return a.postMessage(JSON.stringify(e))};a.addEventListener("message",function(i){var n=JSON.parse(i.data);switch(n.type){case"init":var o=r.map(n.particles,t.toParticle),u=e.getNeighborhood(o);s.init(o,u,n.config);break;case"tick":s.tick(),c(s.getData());break;case"destroy":a.close();break;default:r.assertNever(n)}});
 },{"../particle/neighbors":"j1Bg","../particle/particle-msg":"33s5","../util":"BHXf","./Simulation":"bZCJ"}]},{},["0INl"], null)
-//# sourceMappingURL=worker.20f6fdb2.map
+//# sourceMappingURL=worker.0b71dd91.map

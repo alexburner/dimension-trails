@@ -1,111 +1,14 @@
-/**
- * Typography via Medium
- */
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-body {
-  text-rendering: optimizeLegibility;
-  font-feature-settings: 'liga' on;
-  -moz-font-feature-settings: 'liga' on;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: #0d2742;
   padding-bottom: 40px;
-
-  &::after {
-    content: '';
-    background: url(https://i.imgur.com/exPj1l7.jpg) no-repeat center center
-      fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-    opacity: 0.8;
-  }
-}
-
-$canvas-width: 900px;
-$canvas-height: 720px;
-$left-width: 80px;
-$right-width: 300px;
-$total-width: $canvas-width + $left-width + $right-width;
-
-#container {
-  display: flex;
-  width: $total-width;
-  height: $canvas-height;
-  margin: auto;
 }
 
 canvas {
   display: block;
-}
-
-dl {
-  &.left {
-    width: $left-width;
-    text-align: right;
-
-    // hack it up
-    position: relative;
-    right: -20px;
-
-    dd {
-      margin-right: 4px;
-    }
-  }
-
-  &.right {
-    width: $right-width;
-
-    dd {
-      margin-left: 2px;
-    }
-  }
-
-  dt {
-    font-family: Times, serif;
-    font-size: 28px;
-    font-style: italic;
-    font-weight: bold;
-
-    margin-top: 83px;
-
-    small {
-      font-family: Helvetica, sans-serif;
-      font-size: 11px;
-      font-style: normal;
-      font-weight: normal;
-      text-transform: uppercase;
-
-      // hack it up
-      margin-left: 5px;
-      position: relative;
-      top: -2px;
-    }
-  }
-
-  dd {
-    font-family: Helvetica, sans-serif;
-    font-size: 12px;
-
-    margin-top: 2px;
-  }
+  margin: auto;
 }

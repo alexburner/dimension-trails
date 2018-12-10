@@ -11,7 +11,7 @@ import { each, getUrlHashParams, map, times } from './util'
 
 const DIMENSIONS = 4
 const RADIUS = 14
-const COUNT = 4
+const COUNT = 3
 const SPIN = -0.004
 
 /////////////////////////////////
