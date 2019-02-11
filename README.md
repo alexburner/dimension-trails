@@ -2,7 +2,7 @@
 
 Orbital motion through 01234D & time
 
-[![](https://i.imgur.com/azkBHmlm.png)](https://alexburner.github.io/dimension-trails)
+[![](https://i.imgur.com/HQJWiSKl.png)](https://alexburner.github.io/dimension-trails)
 
 Static site — [https://alexburner.github.io/dimension-trails](https://alexburner.github.io/dimension-trails)
 
